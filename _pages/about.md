@@ -8,10 +8,10 @@ profile:
   align: right
   image: prof_pic.jpg
   address: >
-    <p align="justify" style="font-size:14px">Institute of Biomedical Engineering (IBME),</p>
-    <p align="justify" style="font-size:14px">Old Road Campus Research Building (ORCRB),</p>
-    <p align="justify" style="font-size:14px">University of Oxford,</p>
-    <p align="justify" style="font-size:14px"> OX37DQ, UK.</p>
+    <p align="left" style="font-size:14px">Institute of Biomedical Engineering (IBME),</p>
+    <p align="left" style="font-size:14px">Old Road Campus Research Building (ORCRB),</p>
+    <p align="left" style="font-size:14px">University of Oxford,</p>
+    <p align="left" style="font-size:14px"> OX37DQ, UK.</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
