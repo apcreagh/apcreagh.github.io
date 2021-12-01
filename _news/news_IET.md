@@ -24,7 +24,7 @@ The IET William James Award was presented specifically for my research where I h
 I would like to express my gratitude to my PI Prof. Clifton, Prof. Maarten De Vos, F-Hoffmann La Roche, GSK, as well as all our collaborators and those who have mentored us along the way”.
 
 ## IET Annual Healthcare Lecture
-As part of the award, I recieve a £500 prize, a years free membership to IET, as well as a guest lecture on my reserach at the IET Annual Healthcare Lecture on Wednesday 8th December 2021 from 10:00 – 11:30am GMT. For more details see 
+As part of the award, I receive a £500 prize, a years free membership to IET, as well as a guest lecture on my research at the IET Annual Healthcare Lecture on Wednesday 8th December 2021 from 10:00 – 11:30am GMT. For more details see 
 [IET Annual Healthcare Lecture](https://www.theiet.org/impact-society/awards-scholarships/the-healthcare-technologies-student-and-early-career-awards/current-winners/).
 
 [Click here](https://event.on24.com/wcc/r/3484311/E475DD15AD2797EFBC00E32454FE2429?partnerref=TNhub) to register for the IET Annual Healthcare Lecture 2021 lecture. 
