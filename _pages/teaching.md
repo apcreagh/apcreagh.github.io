@@ -18,7 +18,7 @@ The CDT HDS machine-learning for time-series course material can be found at
 [https://github.com/apcreagh/CDTworkshop_ML4timeseries/](https://github.com/apcreagh/CDTworkshop_ML4timeseries/)
 
 ## Department of Engineering Science
-### B18 Biomedical Modelling and Monitoring (2017-2021)
+### B18 Biomedical Modelling and Monitoring (2017-2022)
 3rd Year Engineering Undergraduates: 
 - Head Demonstrator & Tutor <br>
 
