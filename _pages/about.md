@@ -23,16 +23,16 @@ social: true  # includes social icons at the bottom of the page
 ## Welcome 
 I am a Postdoctoral Researcher at the [Computational Health Informatics (CHI)](https://eng.ox.ac.uk/chi/){:target="\_blank"} laboratory at the University of Oxford led by [Prof. David A. Clifton](https://eng.ox.ac.uk/chi/team/){:target="\_blank"}. 
 
-I am concurrently a [GSK](https://www.gsk.ai/){:target="\_blank"} Postdoctoral Fellow in Digital Biomarkers, a Junior Research Fellow at [St Cross College](https://www.stx.ox.ac.uk/){:target="\_blank"}, University of Oxford, and a Postdoctoral Researcher at the Wearables Laboratory led by [Prof. Aiden Doherty](https://www.bdi.ox.ac.uk/Team/aiden-doherty){:target="\_blank"} at the [Big Data Institute (BDI)](https://www.bdi.ox.ac.uk/){:target="\_blank"}, University of Oxford. <br> 
+I am concurrently a [GSK](https://www.gsk.com/en-gb/){:target="\_blank"} Postdoctoral Fellow in Digital Biomarkers, a Junior Research Fellow at [St Cross College](https://www.stx.ox.ac.uk/){:target="\_blank"}, University of Oxford, and a Postdoctoral Researcher at the Wearables Laboratory led by [Prof. Aiden Doherty](https://www.bdi.ox.ac.uk/Team/aiden-doherty){:target="\_blank"} at the [Big Data Institute (BDI)](https://www.bdi.ox.ac.uk/){:target="\_blank"}, University of Oxford. <br> 
 
 ##### Links:
 [My Departmental Website](https://eng.ox.ac.uk/people/andrew-creagh/){:target="\_blank"} <br>
 [My College Website](https://www.stx.ox.ac.uk/people/dr-andrew-creagh){:target="\_blank"}<br>
 
 ## Research 
-My research aims to explore how we can capture <em>digital biomarkers</em> of disease, through continuously collecting smartphone and smartwatch measurements when patients are at-home. I work mainly with patients who have neurdegenerative and autoimmune diseases, such as multiple sclerosis, rheumatoid arthritis, Parkinson's disease and dementia. 
+My research aims to explore how we can capture <em>digital biomarkers</em> of disease using counsumer digital health technologies (DHT)---by continuously collecting smartphone and smartwatch measurements when patients are at-home. I work mainly with patients who have neurdegenerative and autoimmune diseases, such as multiple sclerosis, rheumatoid arthritis, Parkinson's disease and dementia. 
 
-Clinical applications of machine learning (ML) can act as powerful tools to learn complex and unseen digital patterns of disease, to help remotely monitor and identify signs of degeneration before they occur, and to understand new facets of habitual disease and disease phenotypes. I have a specific interest in creating interpretable, robust, and transparent models through explainable AI (XAI) frameworks. 
+Clinical applications of AI/ML (machine learning) can act as powerful tools to learn complex and unseen digital patterns of disease, to help remotely monitor and identify signs of degeneration before they occur, and to understand new facets of habitual disease and disease phenotypes. I have a specific interest in creating interpretable, robust, and transparent models through explainable AI (XAI) frameworks. 
 
 ## Background 
 I obtained my DPhil. (PhD) in Clinical Machine Learning at the University of Oxford, developing digital biomarkers in collaboration with industrial partners, [F. Hoffmann-La Roche](https://www.roche.com/about/priorities/personalised_healthcare/digital-biomarkers.htm){:target="\_blank"}. 
