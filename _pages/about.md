@@ -27,7 +27,7 @@ I am concurrently a [GSK](https://www.gsk.com/en-gb/){:target="\_blank"} Postdoc
 
 ##### My Research Profiles:
 [Dept. of Engineering Science Website](https://eng.ox.ac.uk/people/andrew-creagh/){:target="\_blank"} <br>
-[Big Data Instiutute Website](https://www.bdi.ox.ac.uk/Team/andrew-creagh){:target="\_blank"} <br>
+[Big Data Institute Website](https://www.bdi.ox.ac.uk/Team/andrew-creagh){:target="\_blank"} <br>
 [St Cross College Website](https://www.stx.ox.ac.uk/people/dr-andrew-creagh){:target="\_blank"}<br>
 
 ## Research 
