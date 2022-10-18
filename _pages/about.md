@@ -23,11 +23,12 @@ social: true  # includes social icons at the bottom of the page
 ## Welcome 
 I am a Postdoctoral Researcher at the [Computational Health Informatics (CHI)](https://eng.ox.ac.uk/chi/){:target="\_blank"} laboratory at the University of Oxford led by [Prof. David A. Clifton](https://eng.ox.ac.uk/chi/team/){:target="\_blank"}. 
 
-I am concurrently a [GSK](https://www.gsk.com/en-gb/){:target="\_blank"} Postdoctoral Fellow in Digital Biomarkers, a Junior Research Fellow at [St Cross College](https://www.stx.ox.ac.uk/){:target="\_blank"}, University of Oxford, and a Postdoctoral Researcher at the Wearables Laboratory led by [Prof. Aiden Doherty](https://www.bdi.ox.ac.uk/Team/aiden-doherty){:target="\_blank"} at the [Big Data Institute (BDI)](https://www.bdi.ox.ac.uk/){:target="\_blank"}, University of Oxford. <br> 
+I am concurrently a [GSK](https://www.gsk.com/en-gb/){:target="\_blank"} Postdoctoral Fellow in Digital Biomarkers, a Junior Research Fellow at [St Cross College](https://www.stx.ox.ac.uk/people/dr-andrew-creagh){:target="\_blank"}, University of Oxford, and a Postdoctoral Researcher at the [Oxford Wearables Laboratory](https://www.bdi.ox.ac.uk/research/wearables-group){:target="\_blank"} led by [Prof. Aiden Doherty](https://www.bdi.ox.ac.uk/Team/aiden-doherty){:target="\_blank"} at the [Big Data Institute (BDI)](https://www.bdi.ox.ac.uk/){:target="\_blank"}, University of Oxford. <br> 
 
-##### Links:
-[My Departmental Website](https://eng.ox.ac.uk/people/andrew-creagh/){:target="\_blank"} <br>
-[My College Website](https://www.stx.ox.ac.uk/people/dr-andrew-creagh){:target="\_blank"}<br>
+##### My Research Profiles:
+[Dept. of Engineering Science Website](https://eng.ox.ac.uk/people/andrew-creagh/){:target="\_blank"} <br>
+[Big Data Instiutute Website](https://www.bdi.ox.ac.uk/Team/andrew-creagh){:target="\_blank"} <br>
+[St Cross College Website](https://www.stx.ox.ac.uk/people/dr-andrew-creagh){:target="\_blank"}<br>
 
 ## Research 
 My research aims to explore how we can capture digital biomarkers of disease using consumer digital health technologies (DHT)---collected from smartphone and smartwatch app. sensors and patient reported outcomes (PROs) when patients are at home---to develop personalised monitoring, enhance patient treatment strategies, and ultimately the development of validated digital biomarkers for clinical trial (CT) end-points and prescribed digital therapeutics (DTx). I have worked with CT data from patients in a range of Therapeutic Areas (TA) from multiple sclerosis to Parkinson’s disease, rheumatoid arthritis and dementia.
