@@ -4,7 +4,7 @@ title: Digital health technologies and machine learning augment patient reported
 description: Our new pre-print is now available online! 🥳 Here I will summarise our main findings and the impact of our work in the 14-day observational study in RA, known as weaRAble-PRO. 
 tags: [digital health]  
 categories: pre-print summary
-date: 2022-11-21
+date: 2022-11-22
 draft: true
 posts:
     share: [twitter, linkedin]
