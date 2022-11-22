@@ -5,7 +5,8 @@ description: Our new pre-print is now available online! 🥳 Here I will summari
 tags: [digital health]  
 categories: pre-print summary
 date: 2022-11-22
-draft: true
+draft: False
+preview: assets/img/RA_explainer.png
 posts:
     share: [twitter, linkedin]
 
@@ -147,7 +148,7 @@ In recent years, the emergence of consumer digital health technologies (DHT) has
 From these remotely collected wearable sensor-outcomes (such as from the iPhone and Apple smartwatch) we establish how ML can help characterise the impact of RA on daily life. For example, modelling of objective sensor-outcomes could identify RA participants from healthy controls---with improved performance when combining the sensor-data from both devices---and augmented standard patient (self-) reported outcomes to remotely estimate RA severity, as measured by the in-clinic RAPID-3 assessment of RA. To the best of our knowledge, these results offer the first comprehensive evaluation and insight how remote monitoring outcomes in daily life can can characterise RA status and severity, which represents an important first step towards the development of more sensitive and patient-centric measurements for use in RA clinical trials and real-world studies.
 
 <img src="/assets/img/RA_explainer.png" width="700"/><br>
-<p align="justify"><b>The potential of digital health technologies (DHT) to monitor RA.</b> DHT can be administered remotely outside of standard clinical settings to better measure how disease can impact a person’s daily life. These objective and more frequently collected measures&mdash;known as <em>digital biomarkers</em>&mdash;offer huge potentioal to augment standard in-clinic assesments for RA, ultimately to develop more sensitive and patient-centric measurements for use in RA clinical trials and real-world studies. 
+<p align="justify"><b>The potential of digital health technologies (DHT) to monitor RA.</b> DHT can be administered remotely outside of standard clinical settings to better measure how disease can impact a person’s daily life. These objective and more frequently collected measures&mdash;known as <em>digital biomarkers</em>&mdash;offer huge potential  to augment standard in-clinic assessments for RA, ultimately to develop more sensitive and patient-centric measurements for use in RA clinical trials and real-world studies. 
 </p>
 
 
