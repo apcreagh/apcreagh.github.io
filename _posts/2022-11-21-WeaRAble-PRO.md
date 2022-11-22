@@ -6,9 +6,8 @@ tags: [digital health]
 categories: pre-print summary
 date: 2022-11-22
 draft: False
-preview: assets/img/RA_explainer.png
-posts:
-    share: [twitter, linkedin]
+preview: https://raw.githubusercontent.com/apcreagh/apcreagh.github.io/master/assets/img/RA_explainer.png
+
 
 authors:
   - name: Andrew P. Creagh*
