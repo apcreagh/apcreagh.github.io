@@ -178,11 +178,13 @@ The foundation of this work employs the latest advances in machine learning (ML)
 In this study, we build upon our previous work by adding a temporal dependency to the DCNN (SSL) through a hidden markov model (HMM), which
 was appended to obtain a more accurate sequence of predicted activities over the continuous study period. It was found that the DCNN (SSL) + HMM improved activity estimation in Capture-24 ($\kappa$, 0.862 ± 0.088; F1, 0.815 ± 0.103) as compared to a baseline random forest (RF) + HMM approach ($\kappa$, 0.813 ± 0.108; F1, 0.775 ± 0.117) <d-cite key="willetts2018statistical"></d-cite>. Our SSL DCNN+HMM model enables a more robust and fine-grained estimation of daily activity patterns beyond traditional acceleration magnitude levels <d-cite key="prioreschi2013clinical"></d-cite><d-cite key="gossec2019detection"></d-cite>, which we propose allows for a richer characterisation of PA and sleep from wearable sensor data.
 
+For more information on our SSL model, check out our recent [blog post](https://oxwearables.github.io/ssl-wearables/). 
+
 <img src="/assets/img/ssl_wearable-pro.png" width="700"/><br>
 <p align="justify"><b>Self-supervised learning pipeline</b>. Continuous (passive) actigraphy was recorded from participants' Apple smartwatch over the study duration. Deep convolutional neural networks (DCNN) were pre-trained on 700,000 person days in the publicly available UK Biobank using self-supervised learning&mdash;and fine-tuned with the Capture-24 dataset&mdash;to estimate participant's daily activity patterns in the weaRAble-PRO study. Physical activity (PA) metrics of daily-life, for example, the time spent walking, the frequency of exercise, or the length and quality of sleep were investigated as markers to characterise symptoms of disease in people with RA compared to HC.</p>
 
 
-### Extraction sensor-based outcomes
+### Extraction of sensor-based outcomes
 Wearable sensor-based features were derived from the smartphone during the active guided tasks and passively from the
 smartwatch during daily life. “Active” features were extracted from smartphone sensor-based measurements during the prescribed guided tests, and aimed to capture specific aspects of RA physical function, related to pain, dexterity, mobility and fatigue. In addition, “passive” features were extracted from smartwatch sensor-based measurements, collected continuously in the background over the 14-day period. Daily activity predictions from the ML SSL model were summarised into general features measuring activity levels, period, duration, and type of activity, as well as sleep detection and sleeping patterns.
 
@@ -210,7 +212,7 @@ Our work is the first study to combine active smartphone and passive wearable me
 In addition, further experiments with the LR-SG-lasso determined that only activity monitoring domain features were mainly needed in order to identify RA participants. This indicates that we sometimes do not need to prescribe all guided test assessments, or to parse all activity feature domains, but that a small number of prescribed assessments can be sufficient to characterise RA status. For example, including only the lie-to-stand assessment rather than also prescribing the similar and highly correlated sit-to-stand assessment in feature studies; or removing the prescribed walking assessment (shown to have little predictive value in the weaRAble-PRO study) and using passive daily life walking predictions generated from the activity recognition model instead, which could reduce patient burden. 
 
 <div class="fake-img l-body">
-  <img src="/assets/img/PRO_sensor_barchart.png" width="350"/><img src="/assets/img/sensor_barchart.png" width="350"/><br>
+  <img src="/assets/img/sensor_barchart.png" width="350"/><img src="/assets/img/PRO_sensor_barchart.png" width="350"/><br>
   <p><b>Ability of combined sensor-outcomes to distinguish between RA status and RA severity levels.</b> Comparison of (a) RA identification (RA vs. HC) performance and (b) RA severity level estimation (RA (mod) vs RA (sev)), using patient reported outcomes (PRO) and combined PRO, active, and passive sensor-based outcomes in the weaRAble-PRO study. auroc: Area under the receiver operator curve; $\kappa$, Cohen's Kappa statistic; F<sub>1</sub>, Macro-F1 score.</p>
 </div>
 
