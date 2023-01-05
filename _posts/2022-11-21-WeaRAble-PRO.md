@@ -94,7 +94,7 @@ _styles: >
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 12px;
+    margin-bottom: 20px;
   }
   .fake-img p {
     font-family: monospace;
@@ -103,8 +103,24 @@ _styles: >
     margin: 12px 0;
     text-align: left;
     font-size: 14px;
+    margin-bottom: 20px;
   }
-
+  .fake-img figcaption {
+      text-align: justify;
+      margin-bottom: 20px;
+  }
+  figure {
+      display: inline-block;
+      margin: 5px; /* adjust as needed */
+  }
+  figure img {
+      vertical-align: middle;
+      margin-bottom: 12px;
+  }
+  figure figcaption {
+      text-align: justify;
+      margin-bottom: 20px;
+  }
 ---
 
 <!---------------------------------------------------------------------------------------------------------->
@@ -146,9 +162,11 @@ In recent years, the emergence of consumer digital health technologies (DHT) has
 
 From these remotely collected wearable sensor-outcomes (such as from the iPhone and Apple smartwatch) we establish how ML can help characterise the impact of RA on daily life. For example, modelling of objective sensor-outcomes could identify RA participants from healthy controls---with improved performance when combining the sensor-data from both devices---and augmented standard patient (self-) reported outcomes to remotely estimate RA severity, as measured by the in-clinic RAPID-3 assessment of RA. To the best of our knowledge, these results offer the first comprehensive evaluation and insight how remote monitoring outcomes in daily life can can characterise RA status and severity, which represents an important first step towards the development of more sensitive and patient-centric measurements for use in RA clinical trials and real-world studies.
 
+<figure>
 <img src="/assets/img/RA_explainer.png" width="700"/><br>
-<p align="justify"><b>The potential of digital health technologies (DHT) to monitor RA.</b> DHT can be administered remotely outside of standard clinical settings to better measure how disease can impact a person’s daily life. These objective and more frequently collected measures&mdash;known as <em>digital biomarkers</em>&mdash;offer huge potential  to augment standard in-clinic assessments for RA, ultimately to develop more sensitive and patient-centric measurements for use in RA clinical trials and real-world studies. 
-</p>
+<figcaption><b>The potential of digital health technologies (DHT) to monitor RA.</b> DHT can be administered remotely outside of standard clinical settings to better measure how disease can impact a person’s daily life. These objective and more frequently collected measures&mdash;known as <em>digital biomarkers</em>&mdash;offer huge potential  to augment standard in-clinic assessments for RA, ultimately to develop more sensitive and patient-centric measurements for use in RA clinical trials and real-world studies. 
+</figcaption>
+</figure>
 
 
 ## Background
@@ -161,9 +179,11 @@ The concept behind our work is to use digital health technologies (DHT) (typical
 ### Study Objectives 
 Unfortunately, there remains a lack of sufficient evidence for how DHT can provide objective insights into the impact of therapies for RA. Particularly, the benefit of sensor-outcomes generated from prescribed active assessments compared with passive monitoring has not yet been explored together. Furthermore, while digitised PROs enhance patients' ability to frequently record disease activity<d-cite key="el2016toward"></d-cite>, it remains unclear how objective sensor-outcomes could provide additional insight beyond PROs to characterise the impact of RA on daily life. The sensitivity of DHT to measure RA symptoms, such as the volume of remote data required and the number of sensor-outcome measurements needed, also needs to be determined. Finally, the application of DHT sensor-outcomes to monitor RA daily life remains to be validated against standard in-clinic administered assessments of RA impact<d-cite key="coravos2019developing"></d-cite>.
 
+<figure>
 <img src="/assets/img/wearable-pro-study.png" width="700"/><br>
-<p align="justify"><b>Illustration detailing the objectives of this study</b>. The weaRAble-PRO 14-day trial aimed to investigate how
-digital health technologies (DHT)&mdash;a wrist-worn Apple smartwatch and an iPhone device, with bespoke mobile apps.&mdash;could augment patient reported outcomes (PRO) to characterise the impact of rheumatoid arthritis (RA) on the daily life of 30 moderate-to-severe RA patients, compared to 30 matched healthy controls (HC).</p>
+<figcaption><b>Illustration detailing the objectives of this study</b>. The weaRAble-PRO 14-day trial aimed to investigate how
+digital health technologies (DHT)&mdash;a wrist-worn Apple smartwatch and an iPhone device, with bespoke mobile apps.&mdash;could augment patient reported outcomes (PRO) to characterise the impact of rheumatoid arthritis (RA) on the daily life of 30 moderate-to-severe RA patients, compared to 30 matched healthy controls (HC).</figcaption>
+</figure>
 
 ## Dataset
 The GSK weaRAble-PRO study (GSK212295)<d-footnote>The full GSK study title is "Novel Digital Technologies for the Assessment of Objective Measures and Patient Reported Outcomes in Rheumatoid Arthritis Patients: A Pilot Study Using a Wrist-Worn Device and Bespoke Mobile App. (212295, weaRAble-PRO)".</d-footnote> was a 14-day observational study with 30 RA patients and 30 matched Healthy Controls (HCs) to investigate how digital health technologies could objectively measure the impact of RA on participants’ daily lives. Remotely collected sensor data was obtained from a wrist-worn Apple Watch---enabling continuous 14-day passive monitoring---and an iPhone, integrated with a bespoke mobile app., which prescribed daily guided assessments.  Sensor-based measures of physical function, mobility, dexterity, and other RA specific symptoms were extracted from daily prescribed (active) iPhone guided tests, such as a wrist-range of motion exercise, a walking assessment, a nine-hole peg test, as well as two pose transition-based mobility exercises, lie-to-stand (LTS) and sit-to-stand (STS). In addition, continuous (passive) actigraphy was recorded from participants’ Apple smartwatch over the study duration in order to characterise daily activity patterns and sleep. Patient-reported outcomes (PRO), most often self-report questionnaires, were also administered to assess disease activity, symptoms, and health status and quality of life from the participants’ perspective. 
@@ -180,9 +200,11 @@ was appended to obtain a more accurate sequence of predicted activities over the
 
 For more information on our SSL model, check out our recent [blog post](https://oxwearables.github.io/ssl-wearables/). 
 
+<figure>
 <img src="/assets/img/ssl_wearable-pro.png" width="700"/><br>
-<p align="justify"><b>Self-supervised learning pipeline</b>. Continuous (passive) actigraphy was recorded from participants' Apple smartwatch over the study duration. Deep convolutional neural networks (DCNN) were pre-trained on 700,000 person days in the publicly available UK Biobank using self-supervised learning&mdash;and fine-tuned with the Capture-24 dataset&mdash;to estimate participant's daily activity patterns in the weaRAble-PRO study. Physical activity (PA) metrics of daily-life, for example, the time spent walking, the frequency of exercise, or the length and quality of sleep were investigated as markers to characterise symptoms of disease in people with RA compared to HC.</p>
-
+<figcaption><b>Self-supervised learning pipeline</b>. Continuous (passive) actigraphy was recorded from participants' Apple smartwatch over the study duration. Deep convolutional neural networks (DCNN) were pre-trained on 700,000 person days in the publicly available UK Biobank using self-supervised learning&mdash;and fine-tuned with the Capture-24 dataset&mdash;to estimate participant's daily activity patterns in the weaRAble-PRO study. Physical activity (PA) metrics of daily-life, for example, the time spent walking, the frequency of exercise, or the length and quality of sleep were investigated as markers to characterise symptoms of disease in people with RA compared to HC.
+</figcaption>
+</figure>
 
 ### Extraction of sensor-based outcomes
 Wearable sensor-based features were derived from the smartphone during the active guided tasks and passively from the
@@ -202,7 +224,7 @@ Activity monitoring revealed distinct differences distinguishing RA status, for 
 
 <div class="fake-img l-body">
   <img src="/assets/img/pop_activity_patterns.png" width="700"/><br>
-  <p>Population-wide daily activity by time of the day. Variation in the average ML SSL model predicted daily-activity (probability) over time for participants in the 14-day weaRAble-PRO study.</p>
+   <figcaption><b>Population-wide daily activity by time of the day</b>. Variation in the average ML SSL model predicted daily-activity (probability) over time for participants in the 14-day weaRAble-PRO study.</figcaption>
 </div>
 
 
@@ -212,8 +234,8 @@ Our work is the first study to combine active smartphone and passive wearable me
 In addition, further experiments with the LR-SG-lasso determined that only activity monitoring domain features were mainly needed in order to identify RA participants. This indicates that we sometimes do not need to prescribe all guided test assessments, or to parse all activity feature domains, but that a small number of prescribed assessments can be sufficient to characterise RA status. For example, including only the lie-to-stand assessment rather than also prescribing the similar and highly correlated sit-to-stand assessment in future studies; or removing the prescribed walking assessment (shown to have little predictive value in the weaRAble-PRO study) and using passive daily life walking predictions generated from the activity recognition model instead, which could reduce patient burden. 
 
 <div class="fake-img l-body">
-  <img src="/assets/img/sensor_barchart.png" width="350"/><img src="/assets/img/PRO_sensor_barchart.png" width="350"/><br>
-  <p><b>Ability of combined sensor-outcomes to distinguish between RA status and RA severity levels.</b> Comparison of (a) RA identification (RA vs. HC) performance and (b) RA severity level estimation (RA (mod) vs RA (sev)), using patient reported outcomes (PRO) and combined PRO, active, and passive sensor-based outcomes in the weaRAble-PRO study. auroc: Area under the receiver operator curve; $\kappa$, Cohen's Kappa statistic; F<sub>1</sub>, Macro-F1 score.</p>
+  <img src="/assets/img/sensor_barchart.png" width="350"/><img src="/assets/img/PRO_sensor_barchart.png" width="350"/><br><br>
+  <figcaption><b>Ability of combined sensor-outcomes to distinguish between RA status and RA severity levels.</b> Comparison of (a) RA identification (RA vs. HC) performance and (b) RA severity level estimation (RA (mod) vs RA (sev)), using patient reported outcomes (PRO) and combined PRO, active, and passive sensor-based outcomes in the weaRAble-PRO study. auroc: Area under the receiver operator curve; $\kappa$, Cohen's Kappa statistic; F<sub>1</sub>, Macro-F1 score.</figcaption>
 </div>
 
 #### 3. Only 7 days of sensor-outcomes are required to remotely characterise RA impact
@@ -221,7 +243,7 @@ We also observed that after collecting 7 days of sensor-data in the weaRAble-PRO
 
 <div class="fake-img l-body">
   <img src="/assets/img/daily_f1.png" width="350"/><img src="/assets/img/daily_icc.png" width="350"/><br>
-  <p><b>The number of days of sensor-data required to remotely characterise RA impact.</b>  Comparison of <b>(a)</b> the minimal amount of days of data needed distinguish RA status, as measured by the F1 score across 5-fold cross validation (CV), between active, passive, and combined feature sources; <b>(b)</b> the feature (test-retest) reliability, as measured by the intraclass correlation coefficient (ICC), between RA participants and HC across the study duration (14 days); F1 scores and ICCs suggest that model performance and feature reliability stabilises once more than 7 days of data are used per participant.</p>
+  <figcaption><b>The number of days of sensor-data required to remotely characterise RA impact.</b>  Comparison of <b>(a)</b> the minimal amount of days of data needed distinguish RA status, as measured by the F1 score across 5-fold cross validation (CV), between active, passive, and combined feature sources; <b>(b)</b> the feature (test-retest) reliability, as measured by the intraclass correlation coefficient (ICC), between RA participants and HC across the study duration (14 days); F1 scores and ICCs suggest that model performance and feature reliability stabilises once more than 7 days of data are used per participant.</figcaption>
 </div>
 
 #### 4. In-clinic RA severity scores can be remotely estimated from PRO and sensor-based outcomes
@@ -229,7 +251,7 @@ We found that combining patient-reported outcomes (PRO) and objective sensor-out
 
 <div class="fake-img l-body">
   <img src="/assets/img/rapid3_estimation_pro_sensor.png" width="700"/><br>
-  <p align="justify"><b>The ability of remote PRO + sensor-outcomes to estimate in-clinic determined RA severity scores</b>. Scatter plot of baseline RAPID-3 scores versus predicted scores per subject. Participant model-estimated RAPID-3 scores can be further interpreted through detailed inspection of the daily smartphone-based patient-reported joint pain map (JMAP) total scores&mdash;which was not included as a predictor in the model. Higher JMAP scores indicate higher levels of pain experienced. Additional interpretability, through the JMAP, demonstrated that PRO + sensor-based outcome estimation of the RAPID-3 could reliably reflect patient's perceived daily RA symptoms.</p>
+  <figcaption><b>The ability of remote PRO + sensor-outcomes to estimate in-clinic determined RA severity scores</b>. Scatter plot of baseline RAPID-3 scores versus predicted scores per subject. Participant model-estimated RAPID-3 scores can be further interpreted through detailed inspection of the daily smartphone-based patient-reported joint pain map (JMAP) total scores&mdash;which was not included as a predictor in the model. Higher JMAP scores indicate higher levels of pain experienced. Additional interpretability, through the JMAP, demonstrated that PRO + sensor-based outcome estimation of the RAPID-3 could reliably reflect patient's perceived daily RA symptoms.</figcaption>
 </div>
 
 
