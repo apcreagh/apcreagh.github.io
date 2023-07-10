@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!-- _layouts/distill.html -->
+<html>
+  <head><!-- Metadata, OpenGraph and Schema.org -->
+
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Longitudinal Trend Monitoring of Multiple Sclerosis Ambulation Using Smartphones | Andrew P. Creagh</title>
+    <meta name="author" content="Andrew P. Creagh" />
+    <meta name="description" content="Our paper was recently accepted for publication in IEEE OJEMB! 🥳 Here I will summarise our main findings and the impact of our work." />
+
+<!-- Bootstrap & MDB -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+<!-- Code Syntax Highlighting -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light" />
+
+<!-- Styles -->
+
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="canonical" href="https://apcreagh.github.io/blog/2023/Longitudinal-Monitoring/">
+
+<!-- Dark Mode -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark" />
+
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/dark_mode.js"></script>
+
+
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- MathJax -->
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script>
+<script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+<script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <!-- Distill js -->
+    <script src="/assets/js/distillpub/template.v2.js"></script>
+    <script src="/assets/js/distillpub/transforms.v2.js"></script>
+    <script src="/assets/js/distillpub/overrides.js"></script>
+    
+    <!-- Page/Post style -->
+    <style type="text/css">
+      .fake-img {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+  text-align: justify;
+} .fake-img p {
+  font-family: monospace;
+  color: white;
+  margin: 12px 0;
+  text-align: justify;
+  font-size: 14px;
+}
+figure {
+    display: inline-block;
+    margin: 5px; /* adjust as needed */
+} figure img {
+    vertical-align: middle;
+    margin-bottom: 12px;
+} figure figcaption {
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+    </style>
+  </head>
+
+  <d-front-matter>
+    <script async type="text/json">{
+      "title": "Longitudinal Trend Monitoring of Multiple Sclerosis Ambulation Using Smartphones",
+      "description": "Our paper was recently accepted for publication in IEEE OJEMB! 🥳 Here I will summarise our main findings and the impact of our work.",
+      "published": "January 5, 2023",
+      "authors": [
+        {
+          "author": "Andrew P. Creagh*",
+          "authorURL": "https://www.andrewcreagh.com",
+          "affiliations": [
+            {
+              "name": "University of Oxford, UK.",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "author": "Frank Dondelinger",
+          "authorURL": "https://ch.linkedin.com/in/frank-dondelinger-bb634992",
+          "affiliations": [
+            {
+              "name": "F-Hoffmann La Roche, CH.",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "author": "Florian Lipsmeier",
+          "authorURL": "https://ch.linkedin.com/in/florian-lipsmeier-147ab0162/",
+          "affiliations": [
+            {
+              "name": "F-Hoffmann La Roche, CH.",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "author": "Michael Lindemann",
+          "authorURL": "https://de.linkedin.com/in/michaellindemann/",
+          "affiliations": [
+            {
+              "name": "F-Hoffmann La Roche, CH.",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "author": "Maarten De Vos",
+          "authorURL": "https://www.esat.kuleuven.be/stadius/person.php?id=203",
+          "affiliations": [
+            {
+              "name": "KU Leuven, BE.",
+              "url": ""
+            }
+          ]
+        }
+        
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
+  </d-front-matter>
+
+  <body class="fixed-top-nav">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/"><span class="font-weight-bold">Andrew </span>P. Creagh</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/teaching/">teaching</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </header>
+
+    <!-- Content -->
+    <div class="post distill">
+
+      <d-title>
+        <h1>Longitudinal Trend Monitoring of Multiple Sclerosis Ambulation Using Smartphones</h1>
+        <p>Our paper was recently accepted for publication in IEEE OJEMB! 🥳 Here I will summarise our main findings and the impact of our work.</p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <d-contents>
+          <nav class="l-text figcaption">
+          <h3>Contents</h3>
+            <div><a href="#summary">Summary</a></div>
+            <div><a href="#background">Background</a></div>
+            <div><a href="#"></a></div>
+            <ul>
+              <li><a href="#study-objectives">Study Objectives</a></li>
+              
+            </ul>
+<div><a href="#dataset">Dataset</a></div>
+            <div><a href="#methods">Methods</a></div>
+            <div><a href="#"></a></div>
+            <ul>
+              <li><a href="#estimating-ambulatory-related-disease-severity">Estimating Ambulatory-related Disease Severity</a></li>
+              <li><a href="#longitudinal-trend-monitoring">Longitudinal Trend Monitoring</a></li>
+              
+            </ul>
+<div><a href="#key-findings">Key Findings</a></div>
+            <div><a href="#limitations">Limitations</a></div>
+            <div><a href="#impact">Impact</a></div>
+            <div><a href="#references">References</a></div>
+            
+          </nav>
+        </d-contents>
+
+        <p><a href="https://ieeexplore.ieee.org/document/9944841" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/window-maximize.svg" width="50" height="50"></a>
+<a href="/assets/pdf/Creagh_2022_longitudinal-trend-monitoring.pdf"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/file-pdf.svg" width="50" height="50"></a><br>
+<b>Note:</b> This article is best viewed in ‘light mode’!  <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/sun.svg" width="20" height="20"></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In recent years, the emergence of consumer digital technologies such as smartphones which are used for healthcare applications, has opened the possibility of developing rich, continuous, and objective measures of disease that can be administered remotely outside of standard clinical settings. For instance, consumer smartphone devices can objectively characterise ambulation and fatigue in people with multiple sclerosis (PwMS) which is one of the main symptoms of disease. Importantly, it has been shown that earlier identification of changes in PwMS impairment are important to identify and provide better therapeutic strategies.</p>
+
+<p>In this work, we demonstrated how PwMS’ ambulatory patterns can be captured from smartphone inertial sensor-based measurements recorded during a daily “two-minute walk test” (2MWT), a remotely administered walking test as part of Roche’s seminal FLOODLIGHT study in MS. Deep networks offer state-of-the-art and data-driven approaches that are capable of learning smartphone sensor-based features capturing ambulatory information. Our study subsequently explored how deep convolutional neural networks (DCNNs) could be used to distinguish healthy controls (HC) from PwMS that have mild and moderate disability, longitudinally, over the 24-week study.</p>
+
+<p>Our results indicated that smartphone-based ambulatory severity outcomes could accurately estimate MS level of disability, as measured by the clinician-administered EDSS score. Furthermore, longitudinal severity outcomes were shown to accurately reflect individual participants’ level of disability over the study duration. Anecdotally, we even observed the possibility of these measurements to remotely capture MS relapse events, where an increase in model-estimated symptom severity coincided with when two participants had self-reported that a relpase had occured using their smartphone application.</p>
+<figure>
+<img src="/assets/img/ieee_ojemb/digital_sensor_outcomes.png" width="700"><br>
+<figcaption><b>Digital outcomes for remote MS-patient monitoring</b>. Digital sensor-based outcomes created from digital health technologies, such as smartphone-based sensor outcomes, enable clinicians to continuously monitor the disease course of people with multiple sclerosis (PwMS) outside of the clinic. These objective sensor-based measures can be administered remotely and at high-frequency to PwMS. This granularity of assessment may help capture subtle manifestations of habitual MS, as well as the disease course and relapse events that are currently missed by infrequent and less sensitive in-clinic measures. Diagram adapted from <d-cite key="baker2021digital"></d-cite></figcaption>
+</figure>
+
+<h2 id="background">Background</h2>
+
+<p>The symptoms of neurodegenerative diseases, such as multiple sclerosis (MS), frequently fluctuate over time, and between patients, ensuring
+that it is notoriously difficult to quantify effective therapeutic interventions and disease management techniques. Current in-clinic
+assessments are often too infrequent to track changes in MS impairment over time. People with MS (PwMS) experience a progressive decline in physical function and quality of life and over time—this often leads to disability and difficulty to perform many tasks of daily life (think about going shopping, getting dressed, taking your dog on a walk, or caring for your children or grandchildren). Currently, the gold-standard methods of measuring the impact of MS on daily life rely on infrequent clinical visits that may often occur every 3–4 months, with assessments depending on a combination of subjective clinician-determined scores—in MS, clinicans use the Expanded Disability Status Scale (EDSS) <d-cite key="kurtzke1983edss"></d-cite>—or specific functional domain assessments (i.e., performance-based tests) such as the Timed 25-Foot Walk (T25FW), which is part of the Multiple Sclerosis Functional Composite score, and the Two-Minute Walk Test (2MWT) which also assesses physical gait function and fatigue in PwMS.</p>
+
+<p><br>
+<img src="/assets/img/ieee_ojemb/RRMS_disease_course.png" width="170">
+<img src="/assets/img/ieee_ojemb/PPMS_disease_course.png" width="170">
+<img src="/assets/img/ieee_ojemb/PRMS_disease_course.png" width="170">
+<img src="/assets/img/ieee_ojemb/SPMS_disease_course.png" width="170"><br></p>
+<figcaption><b>Typical disease course for various clinically defined multiple sclerosis (MS) phenotypes</b>: Relapsing-remitting MS (RRMS); Primary-progressive MS (PPMS); Secondary-progressive MS (SPMS) and Progressive-relapsing MS (PRMS). Image adapted from Lublin et al.<d-cite key="Lublin1996"></d-cite>.
+</figcaption>
+<p><br><!---hack...--></p>
+
+<p>Although MS follows a highly heterogeneous and subject-specific disease course, the disease profiles have been grouped into four clinical phenotypes which are based on disease progression <d-cite key="RN876"></d-cite><d-cite key="Goldenberg2012"></d-cite><d-cite key="Confavreux2000"></d-cite><d-cite key="Fisher2008"></d-cite><d-cite key="Steinman2001"></d-cite>:</p>
+<ul>
+  <li>
+<b>Relapsing-remitting MS (RRMS)</b>: the majority of PwMS will initially experience RRMS, a state dominated by sudden acute symptoms developing (a “relapse”) over days before generally plateauing over weeks or months termed “remission”. RRMS generally affects 85% of PwMS and disease activity typically occurs acutely at a sub-clinical level.</li>
+  <li>
+<b>Primary-progressive MS (PPMS)</b>: those experiencing consistent but worsening symptoms can be thought of as having PPMS (roughly 10% of PwMS).</li>
+  <li>
+<b>Secondary-progressive MS (SPMS)</b>: can occur in some RRMS patients, where the disease course continues to worsen with or without periods of remission. Half (50%) of RRMS patients will go onto develop SPMS.</li>
+  <li>
+<b>Progressive-relapsing MS (PRMS)</b>: is more rare (affecting fewer than 5% of PwMS); it occurs from diagnoses as a progressive disease course, with periods of relapse, but without any remission periods.</li>
+</ul>
+
+<p>In recent years, there has been a shift towards the a adoption of body worn sensors to objectively evaluate ambulatory performance in PwMS, circumventing the need for resource-intensive and expensive gait laboratory equipment, but also opening up the possibility to measure physical function outside of standard clinical settings. These technologies can provide new data-driven metrics for clinical decision-making during in-clinic visits <d-cite key="brichetto2019beyond"></d-cite> and may be more accurate than conventional clinical outcomes.</p>
+
+<h3 id="study-objectives">Study Objectives</h3>
+<p>This study builds upon our previous investigations <d-cite key="Creagh2020SmartphoneAmbulation"></d-cite>,<d-cite key="creagh2021interpretable"></d-cite>,<d-cite key="Bourke2020Gait"></d-cite> where we have shown how inertial sensors contained within consumer-based smartphones can be used to characterise gait impairments in PwMS from a remotely administered Two-Minute Walk Test (2MWT). Our previous study <d-cite key="creagh2021interpretable"></d-cite> first introduced how state-of-the-art Deep Convolutional Neural Networks (DCNN) could be applied to smartphone sensor data collected during a remotely performed 2MWT could determine a study participants’ MS status: such as healthy (i.e., no MS), PwMS with mild, or PwMS with moderate disability. The work presented here aims to evaluate how these DCNN severity predictions from daily 2MWTs can characterise the status of healthy participants versus PwMS with mild, or PwMS with moderate disability longitudinally over a 24 week period.</p>
+
+<h2 id="dataset">Dataset</h2>
+<p>The FLOODLIGHT (FL) proof-of-concept (PoC) app was trialled in a 24-week, prospective study in PwMS and HCs (NCT02952911) to assess the feasibility of remote patient monitoring using smartphone (and smartwatch) devices <d-cite key="midaglia2019adherence"></d-cite>,<d-cite key="montalban2021smartphone"></d-cite>. Participants were provided with a pre-configured smartphone (Samsung Galaxy S7) and smartwatch (Motorola 360 Sport) with the Floodlight PoC app installed. A total of 97 participants (24 HC subjects; 52 mildly disabled, PwMSmild, EDSS [0-3]; 21 moderately disabled PwMSmod, EDSS [3.5-5.5]) contributed data which was recorded from a 2MWT performed out-of-clinic <d-cite key="Creagh2020SmartphoneAmbulation"></d-cite>. Subjects were requested to perform a 2MWT daily over a 24-week period, and were clinically assessed at baseline, week 12 and week 24.</p>
+
+<h2 id="methods">Methods</h2>
+
+<figure>
+<img src="/assets/img/ieee_ojemb/ieee_ojemb_visual_summary.png" width="700"><br>
+<figcaption><b>Remote characterisation of ambulatory function using wearables &amp; AI/ML.</b> Artificial Intelligence (AI) algorithms, such as Deep Convolutional Neural Networks, can transform smartphone inertial sensor measurements to estimate participants’ daily ambulatory-related level of multiple sclerosis (MS) disability, collected during a remotely executed Two-Minute Walk Test (2MWT).</figcaption>
+</figure>
+
+<h3 id="estimating-ambulatory-related-disease-severity">Estimating Ambulatory-related Disease Severity</h3>
+<p>The foundation of this work employs a Deep Convolutional Neural Network (DCNN) to estimate participants MS severity from the smartphone inertial sensor data was recorded while participants performed a daily, at home, two minute walk test (2MWT).  The raw accelerometer sensor data from each 2MWT were then partitioned into multiple vector sequences (epochs), where a DCNN was then trained to classify a given epoch as having been performed by a HC, PwMSmild or PwMSmod participant. The DCNN model implemented has previously been introduced in Creagh et al. (2021) <d-cite key="creagh2021interpretable"></d-cite>, where the network was first pre-trained on the UCI smartphone-based Human Activity Recognition (HAR) dataset, and thereafter fine-tuned on the data in FL for MS severity classification.</p>
+
+<p>The network outputs are interpreted as \(\hat y_k(\mathbf{x}_n,\mathbf{w}) = p(y_{k} = k|\mathbf{x}_n)\). As such, $\hat y_k$ can be thought of as the probability that a given epoch \(\mathbf{x}_n\) belonged to class $k$. A continuous estimate of severity (i.e., the predicted level of MS disability) can then be captured by taking an average of all epoch predictions over a test for a given assessment day, $d$ such that:
+\(\begin{align}
+\hat{y}_d= \frac{1}{N}\sum_{n=1}^{N} \underset{k}{\mathrm{argmin}} (p(\hat{y}_k=k | \mathbf{x}_n))
+\end{align}\)
+where $N$ are the number of windowed epochs for a given test date, $d$, and $k$ lies in an ordinal range of $[0, 1,…K]$. Therefore $\hat{y}_d$ will be continuous such that $0\leq \hat{y}_d \leq K$ and can conceptualised as a naive estimate of MS disease severity, mapping a predicted level of disability ranging from healthy to mild to moderate.</p>
+
+<h3 id="longitudinal-trend-monitoring">Longitudinal Trend Monitoring</h3>
+<p>Longitudinal trends of specific participants were examined as a time-series by considering the severity estimates $\hat{y}$ of repeated 2MWTs over all their available data for the duration of the FL study. The goal of this work was to perform longitudinal analysis of participants severity and visualise the average severity trends over time. First, missing 2MWT DCNN-based outcomes were first imputed using piecewise linear interpolation (PLI), by considering $\hat{y}$ as a time-series to impute missing test severity observations on a given date. Note: imputed 2MWTs were only included for calculation of average trend estimation for individual participants and not for model evaluation. Next, a simple trend estimation was applied to the time sequence of severity estimates ($\hat{y}$) across days ($d$) using a $d-$ centred linear moving average filter (MAF). A 7-day window was implemented in order to capture the trends in $\hat{y}_d$ over the study duration.</p>
+
+<h2 id="key-findings">Key Findings</h2>
+
+<h4 id="1-remote-smartphone-sensor-outcomes-reflect-clinician-determined-ms-severity">1. Remote smartphone sensor-outcomes reflect clinician-determined MS severity</h4>
+<p>In this work, it was shown how a deep network classification model could (naïvely) estimate the level of participant disability from ordinal classification categories.  Severity outcome estimates stratified across HC and PwMS groups and were strongly correlated to disease status ($r$: 0.75; $\rho$: 0.71, p$&lt;$0.001), as measured by the EDSS—considered the ground-truth assessment in PwMS <d-cite key="kurtzke1983edss"></d-cite>.</p>
+
+<div class="fake-img l-body">
+  <img src="/assets/img/ieee_ojemb/dcnn_edss_scatter.png" width="400"> 
+  <figcaption><br><b>The relationship between the continuous disease severity outcome estimate, EDSS and subject group</b>. Figure depicts the scatter plot demonstrating the positive correlation ($r$: 0.75; $\rho$: 0.71; $p&lt;$0.001) between the average severity outcome and average EDSS score per subject. A DCNN model was constructed based on the average class predictions (HC, PwMSmild, PwMSmod) per subject over all 2MWTs, creating an estimated continuous prediction probability distribution, ranging from healthy to moderate MS. Each point therefore represents the average estimated severity outcome (probability) for that subject.  A black line represents the line of best fit between severity and EDSS ($r^2$: 0.56, $p&lt;$0.001).</figcaption>
+</div>
+
+<p>For instance, no misclassifcation of HC as PwMSmod was observed, or vice-versa, indicating that severity estimates were reflective of true disease status. More interestingly, those subjects at classification boundaries displayed severities representative of their clinical assessments. For instance, those with EDSS just above 3.5 (i.e. PwMSmod) were misclassified more as PwMSmild compared to those with EDSS much greater than 3.5, implying that a reflective estimate of disease severity could be captured by transforming a DCNN model into a simple probabilistic outcome per subject.</p>
+
+<h4 id="2-smartphones-can-longitudinally-monitor-ms-ambulatory-severity-over-a-24-week-study">2. Smartphones can longitudinally monitor MS ambulatory severity over a 24-week study</h4>
+<p>The longitudinal patterns of healthy controls versus participants with varying manifestations of MS severity could be characterised by examining severity outcomes over the duration of the FL study for individual subjects. For instance, the figure below depicts examples of stable trends for a correctly classified HC and PwMSmod subject respectively. While both participants had some incorrect predictions, the mean severity prediction over all repeated tests reflected the participant’s true class grouping.</p>
+
+<div class="fake-img l-body">
+  <br><img src="/assets/img/ieee_ojemb/Longitudinal_HC.png" width="700"><br><br><img src="/assets/img/ieee_ojemb/Longitudinal_PwMSmod.png" width="700"> <figcaption><br><b> Panel plot illustrating the longitudinal severity estimate outcome for correctly classified a HC and a PwMSmod subject.</b>  Depicted are the estimated level of disability for an example a HC subject and PwMSmod subject during the study. Each circle represents the severity outcome estimate for a 2MWT performed on a given date. Shaded blue lines depict the and 7-day trend, represented by the d-point centred moving average across days (d). Dashed black lines represent site-visits where the participant was assessed clinically.</figcaption>
+</div>
+
+<h4 id="3--remote-smartphone-sensor-outcomes-can-remotely-capture-ms-relapse-events">3.  Remote smartphone sensor-outcomes can remotely capture MS relapse events</h4>
+<p>Evaluating subject’s performance longitudinally suggested that severity estimates may be sensitive to capture MS-symptom worsening, particulary relapses. During the FL study, four participants experienced relapses which they self-reported using the application on their smartphones. Longitudinal analysis of the trajectories of daily severity estimates from these subjects revealed useful insights into the manifestation of relapses expressed in remote inertial sensor data. For instance, two subjects displayed an increased severity outcome up to and around the data of reporting a relapse (see figures below), suggesting that sensor-based ambulatory outcomes could potentially be sensitive enough to remotely capture relapse events.</p>
+
+<div class="fake-img l-body">
+  <br><img src="/assets/img/ieee_ojemb/Longitudinal_PwMSmild_relapse_example-1.png" width="700"><br><br><img src="/assets/img/ieee_ojemb/Longitudinal_PwMSmod_relapse_example-1.png" width="700"><br><br>
+  <figcaption><b>Panel plot illustrating the longitudinal severity estimate outcomes for PwMS participants who self-reported a relapse using the FLOODLIGHT smartphone application during the study.</b>  Each circle represents the severity outcome estimate for a 2MWT performed on a given date. Shaded blue lines depict the and 7-day trend, represented by the $d$-point centred moving average across days ($d$). Dashed black lines represent site-visits where the participant was assessed clinically. Dates of self-reported relapse onset are represented in black.</figcaption>
+</div>
+
+<h4 id="4-missing-data-might-be-indicative-of-changes-in-disability-status">4. Missing data might be indicative of changes in disability status</h4>
+<p>We need to consider that missing data might also contain useful information relating to how a patient is feeling or their MS disability status. For example, the study participant below reported (non-relapse) adverse clinical events occurring on non-specified dates between weeks 8 and 12. Around these dates the particiapnt’s adhereance drops and they stop contributing daily 2MWTs. Obviously, this is an anecdotal example, but it poses the question: “<em>did the adverse event affect this participant’s adherence or ability to perform the test</em> ?”</p>
+
+<div class="fake-img l-body">
+  <br><img src="/assets/img/ieee_ojemb/Longitudinal_PwMSmod_relapse_example-2.png" width="700"><br>
+ <figcaption><br><b>Panel plot illustrating the longitudinal severity estimate outcomes for a PwMS participants with missing data.</b>
+  Each circle represents the severity outcome estimate for a 2MWT performed on a given date. Shaded blue lines depict the and 7-day trend, represented by the $d$-point centred moving average across days ($d$). Dashed black lines represent site-visits where the participant was assessed clinically. Dates of self-reported relapse onset are represented in black.  This participant also reported (non-relapse) adverse clinical events occurring on non-specified dates between weeks 8 and 12.
+ </figcaption>
+</div>
+
+<p>Indeed, missing data might be a marker of changes in disability status itself (i.e., that the data is not missing-at-random (MAR)). However, it is difficult to monitor patients if they’re not contributing data over a long periods—adherence will often be a problem when prescribing 2 minutes of walking a day, daily, for 24 weeks. Therefore, we must consider patient burden when developing our digital biomarker assessments and solutions. In my opinion, I think we need to consider how we can incorporate as much information as possible from passive approaches, collecting sensor data during daily life. For example, a smartwatch could collect sensor-data characterising physical activity and ambulation unobtrusively from patients. Swapping out some prescribed “active” tests, or reducing the frequency of assessments by supplementing with passive data could help build more robust longitudinal models and help circumvent some of the problems associated with missing assessment data.</p>
+
+<h2 id="limitations">Limitations</h2>
+<p>Despite the potential of smartphone-based outcomes to remotely monitor individual participant’s ambulatory function longitudinally, there are several limitations of this study which must be considered.</p>
+
+<ol>
+  <li>
+<strong>Severity outcomes explored in this work were naïve estimates</strong>: although outcomes captured a trend of increased impairment with higher severity (as modelled by EDSS), they should not be considered an exact measure of MS, nor a surrogate clinical outcome to permit any clinical diagnosis, or replace in-clinic assessments.</li>
+  <li>
+<strong>Estimates were not always correct!</strong>: there were many subject misclassifications. In this work we only showed correct and stable estimate examples, however, it must be noted that some participants, both healthy or with MS, followed irregular trends or whose estimated level of disability were consistently incorrect.</li>
+  <li>
+<strong>Predicted outcomes were based solely on ambulation performance</strong>: The 2MWT is an assessment originally only intended to investigate ambulatory function and fatigue in PwMS through the measurement of distance travelled <d-cite key="scalzitti2018validation"></d-cite><d-cite key="kieseier2012"></d-cite>. Many participants in the FL PoC study may not have had ambulatory-related dysfunction, or whose milder level of disease did not impair their gait, compared to the healthy control cohort.
+    <ul>
+      <li>Constructing more robust severity outcomes should also aim to incorporate the data captured from other functional domains, such as dexterity and cognition assesments.</li>
+    </ul>
+  </li>
+  <li>
+<strong>The performance of 2MWT can be highly influenced by the testing environment</strong>: the FL 2MWT was a remotely executed out-of-clinic assessment. We cannot determine how factors such as the length of the hallways, or the number and frequency of subject turns can affect individual’s performance and the subsequent relaibility of our model.</li>
+  <li>
+<strong>The time-series nature of daily repeated 2MWT measurements was not fully utilised</strong>: Each repeated test was treated as independent, and as such, trajectories did not incorporate any temporal information across a population or within a subject; for example, whether the previous day’s $d-1$ test could affect the outcome at $d$ or $d+1$).
+    <ul>
+      <li>It would be assumed that this is critically missing temporal information which could help build more reliable and accurate longitudinal models.</li>
+      <li>For instance, the repeated FL assessments, and therefore sensor outcomes that were extracted, could be analysed with models that exploit this aggregation of temporal information directly <d-cite key="schwab2019phonemd"></d-cite><d-cite key="vaswani2017attention"></d-cite>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="impact">Impact</h2>
+<p>We believe that the work presented in this study to be of important value, emphasising the potential of remote sensor outcomes to augment current in-clinic acquired patient information. The long-term remote monitoring of PwMS function could open up the space for true personalisation: the clustering of disease trajectories or similar patients, estimating the likelihood of disease progression, quantifying response to different treatments as a population or an individual, as well catching the mutable patterns of MS disease that are only visible out-of-clinic and as a function of time.  We believe that our work helps informs future digital health technology-based study design, to better remotely characterise the impact of MS, ultimately to expand the use of DHT to develop more sensitive, and patient-centric, endpoints in clinical trials and real-world studies.</p>
+
+<h2 id="reference">Reference</h2>
+<p>If you use or like our work, please consider citing us:</p>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@article<span class="p">{</span>creagh2022longitudinal, 
+  author=<span class="p">{</span>Creagh, Andrew P. and Dondelinger, Frank and Lipsmeier, Florian and Lindemann, Michael and De Vos, Maarten<span class="p">}</span>, 
+  journal=<span class="p">{</span>IEEE Open Journal of Engineering in Medicine and Biology<span class="p">}</span>,  
+  title=<span class="p">{</span>Longitudinal Trend Monitoring of Multiple Sclerosis Ambulation Using Smartphones<span class="p">}</span>,  
+  year=<span class="p">{</span>2022<span class="p">}</span>, 
+  volume=<span class="p">{</span>3<span class="p">}</span>,  
+  number=<span class="p">{}</span>,  
+  pages=<span class="p">{</span>202-210<span class="p">}</span>, 
+  doi=<span class="p">{</span>10.1109/OJEMB.2022.3221306<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+      <d-bibliography src="/assets/bibliography/2023-01-05-Longitudinal.bib"></d-bibliography>
+    </div>
+
+    <!-- Footer -->
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2023 Andrew P. Creagh. Powered by <a href="http://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.
+
+      </div>
+    </footer>
+
+    <!-- Bootsrap & MDB scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+    
+    
+  </body>
+</html>

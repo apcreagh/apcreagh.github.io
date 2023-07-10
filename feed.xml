@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://apcreagh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://apcreagh.github.io/" rel="alternate" type="text/html" /><updated>2023-07-10T18:57:35+00:00</updated><id>https://apcreagh.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal academic website for Dr. Andrew P. Creagh.
+</subtitle><entry><title type="html">Generating synthetic electronic health record (EHR) data using denoising diffusion probabilistic models</title><link href="https://apcreagh.github.io/blog/2023/EHR_TabDDPM/" rel="alternate" type="text/html" title="Generating synthetic electronic health record (EHR) data using denoising diffusion probabilistic models" /><published>2023-03-01T00:00:00+00:00</published><updated>2023-03-01T00:00:00+00:00</updated><id>https://apcreagh.github.io/blog/2023/EHR_TabDDPM</id><content type="html" xml:base="https://apcreagh.github.io/blog/2023/EHR_TabDDPM/"><![CDATA[<p><a href="https://arxiv.org/abs/2302.14679"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/window-maximize.svg" width="50" height="50" /></a>
+<a href="https://arxiv.org/pdf/2302.14679.pdf"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/file-pdf.svg" width="50" height="50" /></a><br />
+<b>Note:</b> This article is best viewed in ‘light mode’!  <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/sun.svg" width="20" height="20" /></p>
+
+<h2 id="challenge">Challenge</h2>
+<p>The latest advances in machine learning and artificial intelligence (AI/ML) has opened up new possibilities to improve healthcare outcomes by harnessing the large volumes of data contained in electronic health records (EHRs). However, due to the sensitive nature of the information contained in EHRs, strict data sharing requirements and the need to preserve patient privacy has hindered the development and deployment of AI/ML models across healthcare settings.</p>
+
+<h2 id="solution">Solution</h2>
+<p>Generating synthetic patient data, instead, offers a promising solution to mitigate these risks, although creating realistic data is often very tricky and still an open challenge. In our recent work, led by <a href="https://eng.ox.ac.uk/people/taha-ceritli/">Dr. Taha Ceritli</a>, we have explored how a new state-of-the-art type of generative model, known as Denoising Diffusion Probabilistic Models (DDPMs), could generate more realistic synthetic EHR data beyond existing techniqus, such as well-known Generative Adversarial Networks (GANs).</p>
+
+<div class="fake-img l-page">
+  <img src="/assets/img/diffusion_pipeline.png" width="1050" /> 
+  <figcaption><br /><b>An overview of the TabDDPM pipeline</b>: step (1) demonstrates the synthetic data generation process, followed by step (2) where the synthetic data is evaluated based on quality, privacy, utility, and augmentation performance.</figcaption>
+</div>
+
+<h3 id="denoising-diffusion-probabilistic-models-ddpms">Denoising Diffusion Probabilistic Models (DDPMs)</h3>
+<p>Diffusion models are inspired by non-equilibrium thermodynamics, and they learn to generate synthetic data through denoising. Learning by denoising consists of two processes, forwards and reverse, each of which is a Markov Chain:</p>
+
+<h4 id="forward-process">Forward process</h4>
+<p>In the forward process, random noise is added to the orginal data in a series of time steps \((t_1, t_2, \ldots, t_n)\), following \(q(\mathbf{x}_t|\mathbf{x}_{t-1})\), where \(q(\cdot)\) is a Markovian process that produces the corrupted samples at each \(t\). Samples at each time step are drawn from a Gaussian distribution, where the mean of the distribution is conditioned on the sample at the previous time step, and the variance of the distribution follows a fixed schedule. At the end of the forward process, the samples become pure noise.</p>
+
+<h4 id="reverse-process">Reverse process</h4>
+<p>During the reverse process, we try to remove the added noise at every time step, beginning with the pure noise distribution (the last step of the forward process). During the reverse process we can only approximate \(q(\mathbf{x}_{t−1}|\mathbf{x}_t)\), which we do using the conditional probabilities \(p_{\theta}(\mathbf{x}_{t−1}|\mathbf{x}_t)\), as estimated from our neural network. We then try to denoise each sample backwards from \((t_n, t_{n-1}, \ldots, t_1)\) to the original data.</p>
+
+<h2 id="evaluation">Evaluation</h2>
+<p>Our diffusion model, known as <b>TabDDPM</b> due to its flexibility incorporating tabular- and mixed-type data, was compared on four evaluation criteria:</p>
+<ol>
+  <li><b>Data quality</b>: can similar and comparable data be generated?</li>
+  <li><b>Data privacy</b>: Can the the privacy of original patients be preserved?</li>
+  <li><b>Data utility</b>: Can synthesized data be useful for downstream predictive models?</li>
+  <li><b>Data augmentation</b>: Can combining original and synthetic data strengthen the capacity of downstream predictive models?</li>
+</ol>
+
+<p>We found that TabDDPM outperformed many of the state-of-the-art methods on benchmark datasets, except for privacy, highlighting the difficult balance that needs to be maintained when synthesizing EHR. Our the abilty to generate more realistic clinical data comes with the cost of too closly mimicing the unique and confidential characteristics of the original patients.</p>
+
+<p>We’re not there yet, but we hope that our promising results motivates future work exploring how diffusion models could generate realistic healthcare data, without compromising on the privacy considerations of patients.</p>
+
+<h2 id="feedback">Feedback</h2>
+<p>This project is still evolving and we welcome any feedback. If you have comments or suggestions, feel free to reach out to myself or <a href="mailto:taha.ceritli@eng.ox.ac.uk">Dr. Taha Ceritli</a>. 
+Congratulations to all co-authors, Taha Ceritli, Ghadeer Ghosheh, Vinod Kumar Chauhan, Tingting Zhu and David Clifton.</p>
+
+<h2 id="reference">Reference</h2>
+<p>If you use our work, please consider citing:</p>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@article<span class="p">{</span>ceritli2023synthesizing,
+  title = <span class="p">{</span>Synthesizing Mixed-type Electronic Health Records using Diffusion Models<span class="p">}</span>,
+  author = <span class="p">{</span>Ceritli, Taha and Ghosheh, Ghadeer O. and Chauhan, Vinod Kumar and Zhu, Tingting and Creagh, Andrew P. and Clifton, David A.<span class="p">}</span>,
+  doi = <span class="p">{</span>https://doi.org/10.48550/arxiv.2302.14679<span class="p">}</span>,
+  url = <span class="p">{</span>https://arxiv.org/abs/2302.14679<span class="p">}</span>,
+  publisher = <span class="p">{</span>arXiv<span class="p">}</span>,
+  year = <span class="p">{</span>2023<span class="p">}</span>,
+<span class="p">}</span>
+
+</code></pre></div></div>]]></content><author><name>Taha Ceritli</name></author><category term="summary," /><category term="pre-print" /><category term="ClinicalMachineLearning" /><category term="ElectronicHealthRecords" /><category term="SyntheticData" /><category term="GenerativeModels" /><category term="DiffusionModels" /><category term="DenoisingDiffusionProbabilisticModels" /><summary type="html"><![CDATA[Our recent work on 'Synthesizing Mixed-type Electronic Health Records using Diffusion Models' is now available on arXiv! 📢]]></summary></entry><entry><title type="html">Longitudinal Trend Monitoring of Multiple Sclerosis Ambulation Using Smartphones</title><link href="https://apcreagh.github.io/blog/2023/Longitudinal-Monitoring/" rel="alternate" type="text/html" title="Longitudinal Trend Monitoring of Multiple Sclerosis Ambulation Using Smartphones" /><published>2023-01-05T00:00:00+00:00</published><updated>2023-01-05T00:00:00+00:00</updated><id>https://apcreagh.github.io/blog/2023/Longitudinal%20Monitoring</id><content type="html" xml:base="https://apcreagh.github.io/blog/2023/Longitudinal-Monitoring/"><![CDATA[<p><a href="https://ieeexplore.ieee.org/document/9944841"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/window-maximize.svg" width="50" height="50" /></a>
+<a href="/assets/pdf/Creagh_2022_longitudinal-trend-monitoring.pdf"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/file-pdf.svg" width="50" height="50" /></a><br />
+<b>Note:</b> This article is best viewed in ‘light mode’!  <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/sun.svg" width="20" height="20" /></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In recent years, the emergence of consumer digital technologies such as smartphones which are used for healthcare applications, has opened the possibility of developing rich, continuous, and objective measures of disease that can be administered remotely outside of standard clinical settings. For instance, consumer smartphone devices can objectively characterise ambulation and fatigue in people with multiple sclerosis (PwMS) which is one of the main symptoms of disease. Importantly, it has been shown that earlier identification of changes in PwMS impairment are important to identify and provide better therapeutic strategies.</p>
+
+<p>In this work, we demonstrated how PwMS’ ambulatory patterns can be captured from smartphone inertial sensor-based measurements recorded during a daily “two-minute walk test” (2MWT), a remotely administered walking test as part of Roche’s seminal FLOODLIGHT study in MS. Deep networks offer state-of-the-art and data-driven approaches that are capable of learning smartphone sensor-based features capturing ambulatory information. Our study subsequently explored how deep convolutional neural networks (DCNNs) could be used to distinguish healthy controls (HC) from PwMS that have mild and moderate disability, longitudinally, over the 24-week study.</p>
+
+<p>Our results indicated that smartphone-based ambulatory severity outcomes could accurately estimate MS level of disability, as measured by the clinician-administered EDSS score. Furthermore, longitudinal severity outcomes were shown to accurately reflect individual participants’ level of disability over the study duration. Anecdotally, we even observed the possibility of these measurements to remotely capture MS relapse events, where an increase in model-estimated symptom severity coincided with when two participants had self-reported that a relpase had occured using their smartphone application.</p>
+<figure>
+<img src="/assets/img/ieee_ojemb/digital_sensor_outcomes.png" width="700" /><br />
+<figcaption><b>Digital outcomes for remote MS-patient monitoring</b>. Digital sensor-based outcomes created from digital health technologies, such as smartphone-based sensor outcomes, enable clinicians to continuously monitor the disease course of people with multiple sclerosis (PwMS) outside of the clinic. These objective sensor-based measures can be administered remotely and at high-frequency to PwMS. This granularity of assessment may help capture subtle manifestations of habitual MS, as well as the disease course and relapse events that are currently missed by infrequent and less sensitive in-clinic measures. Diagram adapted from <d-cite key="baker2021digital"></d-cite></figcaption>
+</figure>
+
+<h2 id="background">Background</h2>
+
+<p>The symptoms of neurodegenerative diseases, such as multiple sclerosis (MS), frequently fluctuate over time, and between patients, ensuring
+that it is notoriously difficult to quantify effective therapeutic interventions and disease management techniques. Current in-clinic
+assessments are often too infrequent to track changes in MS impairment over time. People with MS (PwMS) experience a progressive decline in physical function and quality of life and over time—this often leads to disability and difficulty to perform many tasks of daily life (think about going shopping, getting dressed, taking your dog on a walk, or caring for your children or grandchildren). Currently, the gold-standard methods of measuring the impact of MS on daily life rely on infrequent clinical visits that may often occur every 3–4 months, with assessments depending on a combination of subjective clinician-determined scores—in MS, clinicans use the Expanded Disability Status Scale (EDSS) <d-cite key="kurtzke1983edss"></d-cite>—or specific functional domain assessments (i.e., performance-based tests) such as the Timed 25-Foot Walk (T25FW), which is part of the Multiple Sclerosis Functional Composite score, and the Two-Minute Walk Test (2MWT) which also assesses physical gait function and fatigue in PwMS.</p>
+
+<p><br />
+<img src="/assets/img/ieee_ojemb/RRMS_disease_course.png" width="170" />
+<img src="/assets/img/ieee_ojemb/PPMS_disease_course.png" width="170" />
+<img src="/assets/img/ieee_ojemb/PRMS_disease_course.png" width="170" />
+<img src="/assets/img/ieee_ojemb/SPMS_disease_course.png" width="170" /><br /></p>
+<figcaption><b>Typical disease course for various clinically defined multiple sclerosis (MS) phenotypes</b>: Relapsing-remitting MS (RRMS); Primary-progressive MS (PPMS); Secondary-progressive MS (SPMS) and Progressive-relapsing MS (PRMS). Image adapted from Lublin et al.<d-cite key="Lublin1996"></d-cite>.
+</figcaption>
+<p><br /><!---hack...--></p>
+
+<p>Although MS follows a highly heterogeneous and subject-specific disease course, the disease profiles have been grouped into four clinical phenotypes which are based on disease progression <d-cite key="RN876"></d-cite><d-cite key="Goldenberg2012"></d-cite><d-cite key="Confavreux2000"></d-cite><d-cite key="Fisher2008"></d-cite><d-cite key="Steinman2001"></d-cite>:</p>
+<ul>
+  <li><b>Relapsing-remitting MS (RRMS)</b>: the majority of PwMS will initially experience RRMS, a state dominated by sudden acute symptoms developing (a “relapse”) over days before generally plateauing over weeks or months termed “remission”. RRMS generally affects 85% of PwMS and disease activity typically occurs acutely at a sub-clinical level.</li>
+  <li><b>Primary-progressive MS (PPMS)</b>: those experiencing consistent but worsening symptoms can be thought of as having PPMS (roughly 10% of PwMS).</li>
+  <li><b>Secondary-progressive MS (SPMS)</b>: can occur in some RRMS patients, where the disease course continues to worsen with or without periods of remission. Half (50%) of RRMS patients will go onto develop SPMS.</li>
+  <li><b>Progressive-relapsing MS (PRMS)</b>: is more rare (affecting fewer than 5% of PwMS); it occurs from diagnoses as a progressive disease course, with periods of relapse, but without any remission periods.</li>
+</ul>
+
+<p>In recent years, there has been a shift towards the a adoption of body worn sensors to objectively evaluate ambulatory performance in PwMS, circumventing the need for resource-intensive and expensive gait laboratory equipment, but also opening up the possibility to measure physical function outside of standard clinical settings. These technologies can provide new data-driven metrics for clinical decision-making during in-clinic visits <d-cite key="brichetto2019beyond"></d-cite> and may be more accurate than conventional clinical outcomes.</p>
+
+<h3 id="study-objectives">Study Objectives</h3>
+<p>This study builds upon our previous investigations <d-cite key="Creagh2020SmartphoneAmbulation"></d-cite>,<d-cite key="creagh2021interpretable"></d-cite>,<d-cite key="Bourke2020Gait"></d-cite> where we have shown how inertial sensors contained within consumer-based smartphones can be used to characterise gait impairments in PwMS from a remotely administered Two-Minute Walk Test (2MWT). Our previous study <d-cite key="creagh2021interpretable"></d-cite> first introduced how state-of-the-art Deep Convolutional Neural Networks (DCNN) could be applied to smartphone sensor data collected during a remotely performed 2MWT could determine a study participants’ MS status: such as healthy (i.e., no MS), PwMS with mild, or PwMS with moderate disability. The work presented here aims to evaluate how these DCNN severity predictions from daily 2MWTs can characterise the status of healthy participants versus PwMS with mild, or PwMS with moderate disability longitudinally over a 24 week period.</p>
+
+<h2 id="dataset">Dataset</h2>
+<p>The FLOODLIGHT (FL) proof-of-concept (PoC) app was trialled in a 24-week, prospective study in PwMS and HCs (NCT02952911) to assess the feasibility of remote patient monitoring using smartphone (and smartwatch) devices <d-cite key="midaglia2019adherence"></d-cite>,<d-cite key="montalban2021smartphone"></d-cite>. Participants were provided with a pre-configured smartphone (Samsung Galaxy S7) and smartwatch (Motorola 360 Sport) with the Floodlight PoC app installed. A total of 97 participants (24 HC subjects; 52 mildly disabled, PwMSmild, EDSS [0-3]; 21 moderately disabled PwMSmod, EDSS [3.5-5.5]) contributed data which was recorded from a 2MWT performed out-of-clinic <d-cite key="Creagh2020SmartphoneAmbulation"></d-cite>. Subjects were requested to perform a 2MWT daily over a 24-week period, and were clinically assessed at baseline, week 12 and week 24.</p>
+
+<h2 id="methods">Methods</h2>
+
+<figure>
+<img src="/assets/img/ieee_ojemb/ieee_ojemb_visual_summary.png" width="700" /><br />
+<figcaption><b>Remote characterisation of ambulatory function using wearables &amp; AI/ML.</b> Artificial Intelligence (AI) algorithms, such as Deep Convolutional Neural Networks, can transform smartphone inertial sensor measurements to estimate participants’ daily ambulatory-related level of multiple sclerosis (MS) disability, collected during a remotely executed Two-Minute Walk Test (2MWT).</figcaption>
+</figure>
+
+<h3 id="estimating-ambulatory-related-disease-severity">Estimating Ambulatory-related Disease Severity</h3>
+<p>The foundation of this work employs a Deep Convolutional Neural Network (DCNN) to estimate participants MS severity from the smartphone inertial sensor data was recorded while participants performed a daily, at home, two minute walk test (2MWT).  The raw accelerometer sensor data from each 2MWT were then partitioned into multiple vector sequences (epochs), where a DCNN was then trained to classify a given epoch as having been performed by a HC, PwMSmild or PwMSmod participant. The DCNN model implemented has previously been introduced in Creagh et al. (2021) <d-cite key="creagh2021interpretable"></d-cite>, where the network was first pre-trained on the UCI smartphone-based Human Activity Recognition (HAR) dataset, and thereafter fine-tuned on the data in FL for MS severity classification.</p>
+
+<p>The network outputs are interpreted as \(\hat y_k(\mathbf{x}_n,\mathbf{w}) = p(y_{k} = k|\mathbf{x}_n)\). As such, $\hat y_k$ can be thought of as the probability that a given epoch \(\mathbf{x}_n\) belonged to class $k$. A continuous estimate of severity (i.e., the predicted level of MS disability) can then be captured by taking an average of all epoch predictions over a test for a given assessment day, $d$ such that:
+\(\begin{align}
+\hat{y}_d= \frac{1}{N}\sum_{n=1}^{N} \underset{k}{\mathrm{argmin}} (p(\hat{y}_k=k | \mathbf{x}_n))
+\end{align}\)
+where $N$ are the number of windowed epochs for a given test date, $d$, and $k$ lies in an ordinal range of $[0, 1,…K]$. Therefore $\hat{y}_d$ will be continuous such that $0\leq \hat{y}_d \leq K$ and can conceptualised as a naive estimate of MS disease severity, mapping a predicted level of disability ranging from healthy to mild to moderate.</p>
+
+<h3 id="longitudinal-trend-monitoring">Longitudinal Trend Monitoring</h3>
+<p>Longitudinal trends of specific participants were examined as a time-series by considering the severity estimates $\hat{y}$ of repeated 2MWTs over all their available data for the duration of the FL study. The goal of this work was to perform longitudinal analysis of participants severity and visualise the average severity trends over time. First, missing 2MWT DCNN-based outcomes were first imputed using piecewise linear interpolation (PLI), by considering $\hat{y}$ as a time-series to impute missing test severity observations on a given date. Note: imputed 2MWTs were only included for calculation of average trend estimation for individual participants and not for model evaluation. Next, a simple trend estimation was applied to the time sequence of severity estimates ($\hat{y}$) across days ($d$) using a $d-$ centred linear moving average filter (MAF). A 7-day window was implemented in order to capture the trends in $\hat{y}_d$ over the study duration.</p>
+
+<h2 id="key-findings">Key Findings</h2>
+
+<h4 id="1-remote-smartphone-sensor-outcomes-reflect-clinician-determined-ms-severity">1. Remote smartphone sensor-outcomes reflect clinician-determined MS severity</h4>
+<p>In this work, it was shown how a deep network classification model could (naïvely) estimate the level of participant disability from ordinal classification categories.  Severity outcome estimates stratified across HC and PwMS groups and were strongly correlated to disease status ($r$: 0.75; $\rho$: 0.71, p$&lt;$0.001), as measured by the EDSS—considered the ground-truth assessment in PwMS <d-cite key="kurtzke1983edss"></d-cite>.</p>
+
+<div class="fake-img l-body">
+  <img src="/assets/img/ieee_ojemb/dcnn_edss_scatter.png" width="400" /> 
+  <figcaption><br /><b>The relationship between the continuous disease severity outcome estimate, EDSS and subject group</b>. Figure depicts the scatter plot demonstrating the positive correlation ($r$: 0.75; $\rho$: 0.71; $p&lt;$0.001) between the average severity outcome and average EDSS score per subject. A DCNN model was constructed based on the average class predictions (HC, PwMSmild, PwMSmod) per subject over all 2MWTs, creating an estimated continuous prediction probability distribution, ranging from healthy to moderate MS. Each point therefore represents the average estimated severity outcome (probability) for that subject.  A black line represents the line of best fit between severity and EDSS ($r^2$: 0.56, $p&lt;$0.001).</figcaption>
+</div>
+
+<p>For instance, no misclassifcation of HC as PwMSmod was observed, or vice-versa, indicating that severity estimates were reflective of true disease status. More interestingly, those subjects at classification boundaries displayed severities representative of their clinical assessments. For instance, those with EDSS just above 3.5 (i.e. PwMSmod) were misclassified more as PwMSmild compared to those with EDSS much greater than 3.5, implying that a reflective estimate of disease severity could be captured by transforming a DCNN model into a simple probabilistic outcome per subject.</p>
+
+<h4 id="2-smartphones-can-longitudinally-monitor-ms-ambulatory-severity-over-a-24-week-study">2. Smartphones can longitudinally monitor MS ambulatory severity over a 24-week study</h4>
+<p>The longitudinal patterns of healthy controls versus participants with varying manifestations of MS severity could be characterised by examining severity outcomes over the duration of the FL study for individual subjects. For instance, the figure below depicts examples of stable trends for a correctly classified HC and PwMSmod subject respectively. While both participants had some incorrect predictions, the mean severity prediction over all repeated tests reflected the participant’s true class grouping.</p>
+
+<div class="fake-img l-body">
+  <br /><img src="/assets/img/ieee_ojemb/Longitudinal_HC.png" width="700" /><br /><br /><img src="/assets/img/ieee_ojemb/Longitudinal_PwMSmod.png" width="700" /> <figcaption><br /><b> Panel plot illustrating the longitudinal severity estimate outcome for correctly classified a HC and a PwMSmod subject.</b>  Depicted are the estimated level of disability for an example a HC subject and PwMSmod subject during the study. Each circle represents the severity outcome estimate for a 2MWT performed on a given date. Shaded blue lines depict the and 7-day trend, represented by the d-point centred moving average across days (d). Dashed black lines represent site-visits where the participant was assessed clinically.</figcaption>
+</div>
+
+<h4 id="3--remote-smartphone-sensor-outcomes-can-remotely-capture-ms-relapse-events">3.  Remote smartphone sensor-outcomes can remotely capture MS relapse events</h4>
+<p>Evaluating subject’s performance longitudinally suggested that severity estimates may be sensitive to capture MS-symptom worsening, particulary relapses. During the FL study, four participants experienced relapses which they self-reported using the application on their smartphones. Longitudinal analysis of the trajectories of daily severity estimates from these subjects revealed useful insights into the manifestation of relapses expressed in remote inertial sensor data. For instance, two subjects displayed an increased severity outcome up to and around the data of reporting a relapse (see figures below), suggesting that sensor-based ambulatory outcomes could potentially be sensitive enough to remotely capture relapse events.</p>
+
+<div class="fake-img l-body">
+  <br /><img src="/assets/img/ieee_ojemb/Longitudinal_PwMSmild_relapse_example-1.png" width="700" /><br /><br /><img src="/assets/img/ieee_ojemb/Longitudinal_PwMSmod_relapse_example-1.png" width="700" /><br /><br />
+  <figcaption><b>Panel plot illustrating the longitudinal severity estimate outcomes for PwMS participants who self-reported a relapse using the FLOODLIGHT smartphone application during the study.</b>  Each circle represents the severity outcome estimate for a 2MWT performed on a given date. Shaded blue lines depict the and 7-day trend, represented by the $d$-point centred moving average across days ($d$). Dashed black lines represent site-visits where the participant was assessed clinically. Dates of self-reported relapse onset are represented in black.</figcaption>
+</div>
+
+<h4 id="4-missing-data-might-be-indicative-of-changes-in-disability-status">4. Missing data might be indicative of changes in disability status</h4>
+<p>We need to consider that missing data might also contain useful information relating to how a patient is feeling or their MS disability status. For example, the study participant below reported (non-relapse) adverse clinical events occurring on non-specified dates between weeks 8 and 12. Around these dates the particiapnt’s adhereance drops and they stop contributing daily 2MWTs. Obviously, this is an anecdotal example, but it poses the question: “<em>did the adverse event affect this participant’s adherence or ability to perform the test</em> ?”</p>
+
+<div class="fake-img l-body">
+  <br /><img src="/assets/img/ieee_ojemb/Longitudinal_PwMSmod_relapse_example-2.png" width="700" /><br />
+ <figcaption><br /><b>Panel plot illustrating the longitudinal severity estimate outcomes for a PwMS participants with missing data.</b>
+  Each circle represents the severity outcome estimate for a 2MWT performed on a given date. Shaded blue lines depict the and 7-day trend, represented by the $d$-point centred moving average across days ($d$). Dashed black lines represent site-visits where the participant was assessed clinically. Dates of self-reported relapse onset are represented in black.  This participant also reported (non-relapse) adverse clinical events occurring on non-specified dates between weeks 8 and 12.
+ </figcaption>
+</div>
+
+<p>Indeed, missing data might be a marker of changes in disability status itself (i.e., that the data is not missing-at-random (MAR)). However, it is difficult to monitor patients if they’re not contributing data over a long periods—adherence will often be a problem when prescribing 2 minutes of walking a day, daily, for 24 weeks. Therefore, we must consider patient burden when developing our digital biomarker assessments and solutions. In my opinion, I think we need to consider how we can incorporate as much information as possible from passive approaches, collecting sensor data during daily life. For example, a smartwatch could collect sensor-data characterising physical activity and ambulation unobtrusively from patients. Swapping out some prescribed “active” tests, or reducing the frequency of assessments by supplementing with passive data could help build more robust longitudinal models and help circumvent some of the problems associated with missing assessment data.</p>
+
+<h2 id="limitations">Limitations</h2>
+<p>Despite the potential of smartphone-based outcomes to remotely monitor individual participant’s ambulatory function longitudinally, there are several limitations of this study which must be considered.</p>
+
+<ol>
+  <li><strong>Severity outcomes explored in this work were naïve estimates</strong>: although outcomes captured a trend of increased impairment with higher severity (as modelled by EDSS), they should not be considered an exact measure of MS, nor a surrogate clinical outcome to permit any clinical diagnosis, or replace in-clinic assessments.</li>
+  <li><strong>Estimates were not always correct!</strong>: there were many subject misclassifications. In this work we only showed correct and stable estimate examples, however, it must be noted that some participants, both healthy or with MS, followed irregular trends or whose estimated level of disability were consistently incorrect.</li>
+  <li><strong>Predicted outcomes were based solely on ambulation performance</strong>: The 2MWT is an assessment originally only intended to investigate ambulatory function and fatigue in PwMS through the measurement of distance travelled <d-cite key="scalzitti2018validation"></d-cite><d-cite key="kieseier2012"></d-cite>. Many participants in the FL PoC study may not have had ambulatory-related dysfunction, or whose milder level of disease did not impair their gait, compared to the healthy control cohort.
+    <ul>
+      <li>Constructing more robust severity outcomes should also aim to incorporate the data captured from other functional domains, such as dexterity and cognition assesments.</li>
+    </ul>
+  </li>
+  <li><strong>The performance of 2MWT can be highly influenced by the testing environment</strong>: the FL 2MWT was a remotely executed out-of-clinic assessment. We cannot determine how factors such as the length of the hallways, or the number and frequency of subject turns can affect individual’s performance and the subsequent relaibility of our model.</li>
+  <li><strong>The time-series nature of daily repeated 2MWT measurements was not fully utilised</strong>: Each repeated test was treated as independent, and as such, trajectories did not incorporate any temporal information across a population or within a subject; for example, whether the previous day’s $d-1$ test could affect the outcome at $d$ or $d+1$).
+    <ul>
+      <li>It would be assumed that this is critically missing temporal information which could help build more reliable and accurate longitudinal models.</li>
+      <li>For instance, the repeated FL assessments, and therefore sensor outcomes that were extracted, could be analysed with models that exploit this aggregation of temporal information directly <d-cite key="schwab2019phonemd"></d-cite><d-cite key="vaswani2017attention"></d-cite>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="impact">Impact</h2>
+<p>We believe that the work presented in this study to be of important value, emphasising the potential of remote sensor outcomes to augment current in-clinic acquired patient information. The long-term remote monitoring of PwMS function could open up the space for true personalisation: the clustering of disease trajectories or similar patients, estimating the likelihood of disease progression, quantifying response to different treatments as a population or an individual, as well catching the mutable patterns of MS disease that are only visible out-of-clinic and as a function of time.  We believe that our work helps informs future digital health technology-based study design, to better remotely characterise the impact of MS, ultimately to expand the use of DHT to develop more sensitive, and patient-centric, endpoints in clinical trials and real-world studies.</p>
+
+<h2 id="reference">Reference</h2>
+<p>If you use or like our work, please consider citing us:</p>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@article<span class="p">{</span>creagh2022longitudinal, 
+  author=<span class="p">{</span>Creagh, Andrew P. and Dondelinger, Frank and Lipsmeier, Florian and Lindemann, Michael and De Vos, Maarten<span class="p">}</span>, 
+  journal=<span class="p">{</span>IEEE Open Journal of Engineering in Medicine and Biology<span class="p">}</span>,  
+  title=<span class="p">{</span>Longitudinal Trend Monitoring of Multiple Sclerosis Ambulation Using Smartphones<span class="p">}</span>,  
+  year=<span class="p">{</span>2022<span class="p">}</span>, 
+  volume=<span class="p">{</span>3<span class="p">}</span>,  
+  number=<span class="p">{}</span>,  
+  pages=<span class="p">{</span>202-210<span class="p">}</span>, 
+  doi=<span class="p">{</span>10.1109/OJEMB.2022.3221306<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name>Andrew P. Creagh*</name></author><category term="summary" /><category term="digital health" /><category term="ieee-ojemb" /><summary type="html"><![CDATA[Our paper was recently accepted for publication in IEEE OJEMB! 🥳 Here I will summarise our main findings and the impact of our work.]]></summary></entry><entry><title type="html">Digital health technologies and machine learning augment patient reported outcomes to remotely characterise rheumatoid arthritis</title><link href="https://apcreagh.github.io/blog/2022/WeaRAble-PRO/" rel="alternate" type="text/html" title="Digital health technologies and machine learning augment patient reported outcomes to remotely characterise rheumatoid arthritis" /><published>2022-11-22T00:00:00+00:00</published><updated>2022-11-22T00:00:00+00:00</updated><id>https://apcreagh.github.io/blog/2022/WeaRAble-PRO</id><content type="html" xml:base="https://apcreagh.github.io/blog/2022/WeaRAble-PRO/"><![CDATA[<!---------------------------------------------------------------------------------------------------------->
+<!----------------------------------------- Abstract ------------------------------------------------------->
+
+<p style="text-align: center;"> <strong>Manucript Abstract</strong></p>
+
+<p align="justify">
+  Digital measures of health status captured during daily life could greatly augment current in-clinic assessments for rheumatoid
+  arthritis (RA) which will enable better assessment of disease progression and impact. This work presents results from weaRAble-PRO,
+  a 14-day observational study, which aimed to investigate how digital health technologies (DHT), such as smartphones and
+  wearables, could augment patient reported outcomes (PRO) to identify RA status and severity in a study of 30 moderate-to-severe
+  RA patients, compared to 30 matched healthy controls (HC). Sensor-based measures of health status, mobility, dexterity,
+  fatigue, and other RA specific symptoms were extracted from daily iPhone guided tests (GT), as well as actigraphy and heart
+  rate sensor data, which was passively recorded from patients’ Apple smartwatch continuously over the study duration. We
+  subsequently developed a machine learning (ML) framework to distinguish RA status and to estimate RA severity. It was found
+  that daily wearable sensor-outcomes robustly distinguished RA from HC participants (F1, 0.807). Furthermore, by day 7 of the
+  study (half-way), a sufficient volume of data had been collected to reliably identify the characteristics of RA participants. In
+  addition, we observed that the detection of RA severity levels could be improved by augmenting standard patient reported
+  outcomes with sensor-based features (F1, 0.833) in comparison to using PRO assessments alone (F1, 0.759) and that the
+  combination of modalities could reliability measure continuous RA severity, as determined by the clinician-assessed RAPID-3
+  score at baseline (r<sup>2</sup>, 0.692; RMSE, 1.33). The ability to measure the impact of disease on daily life—through objective
+  and remote digital outcomes that are meaningful to patients—paves the way forward to enable the development of more
+  patient-centric and personalised measurements for use in RA clinical trials.
+  </p>
+
+<p><a href="https://www.medrxiv.org/content/10.1101/2022.11.18.22282305v1"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/window-maximize.svg" width="50" height="50" /></a>
+<a href="/assets/pdf/Creagh2022_DHTAugmentPROinRA.pdf"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/file-pdf.svg" width="50" height="50" /></a>
+<a href="https://github.com/OxWearables/ssl-wearables"><img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/brands/github.svg" width="50" height="50" /></a></p>
+
+<p><b>Note:</b> This article is best viewed in ‘light mode’! <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/sun.svg" width="20" height="20" /></p>
+
+<!--------------------------------------- End abstract ----------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------->
+
+<h2 id="summary">Summary</h2>
+<p>In recent years, the emergence of consumer digital health technologies (DHT) has opened the possibility of developing rich, continuous, and objective measures of rheumatoid arthritis (RA) disease that can be administered remotely outside of standard clinical settings. In this work, we investigated how DHT, in this case a wrist-worn Apple smartwatch device and a bespoke iPhone mobile app., could augment patient reported outcomes (PRO) to characterise the impact of RA on the daily life of 30 moderate-to-severe RA patients, compared to 30 matched healthy controls (HC). This observational study, known as “weaRAble-PRO” (GSK212295) and collected in collaboration with industrial partners GSK plc., demonstrated how smartphone and smartwatch sensor-outcomes could characterise meaningful aspects of RA impairment and physical function impacting daily life.</p>
+
+<p>From these remotely collected wearable sensor-outcomes (such as from the iPhone and Apple smartwatch) we establish how ML can help characterise the impact of RA on daily life. For example, modelling of objective sensor-outcomes could identify RA participants from healthy controls—with improved performance when combining the sensor-data from both devices—and augmented standard patient (self-) reported outcomes to remotely estimate RA severity, as measured by the in-clinic RAPID-3 assessment of RA. To the best of our knowledge, these results offer the first comprehensive evaluation and insight how remote monitoring outcomes in daily life can can characterise RA status and severity, which represents an important first step towards the development of more sensitive and patient-centric measurements for use in RA clinical trials and real-world studies.</p>
+
+<figure>
+<img src="/assets/img/RA_explainer.png" width="700" /><br />
+<figcaption><b>The potential of digital health technologies (DHT) to monitor RA.</b> DHT can be administered remotely outside of standard clinical settings to better measure how disease can impact a person’s daily life. These objective and more frequently collected measures&mdash;known as <em>digital biomarkers</em>&mdash;offer huge potential  to augment standard in-clinic assessments for RA, ultimately to develop more sensitive and patient-centric measurements for use in RA clinical trials and real-world studies. 
+</figcaption>
+</figure>
+
+<h2 id="background">Background</h2>
+<p>We know that rheumatoid arthritis (RA) patients follow quite subtle and unpredictable disease courses, patient-to-patient, and have a progressive
+decline in physical function and quality of life and over time—this often leads to disability and difficulty to perform many tasks
+of daily life (think about going shopping, getting dressed, taking your dog on a walk, or caring for your grandchildren). Currently, the gold-standard methods of measuring the impact of RA on daily life rely on infrequent clinical visits that may often occur every 3–4 months, with assessments depending on a combination of subjective clinician-determined scores <d-cite key="banderas2017development"></d-cite> and patient-reported outcomes (PROs) (i.e., usually in the form of questionnaires that patients fill out) <d-cite key="lubeck2004patient"></d-cite>. Given that people with RA need to manage their daily life based on the fluctuations of their symptoms <d-cite key="flurey2014juggle"></d-cite>, it would be beneficial to develop <em>meaningful</em> metrics to patients that can objectively measure the impact of disease on <em>their</em> daily life, remotely over a continuous period, rather than restricting assessments to only intermittent physician visits.</p>
+
+<p>The concept behind our work is to use digital health technologies (DHT) (typically these are consumer-grade mobile apps., smartphones, and wearable devices <d-cite key="taylor2020outcome"></d-cite>) to objectively measure participants’ symptoms during daily life <d-cite key="piga2017telemedicine"></d-cite>. DHTs have already shown great promise to increase study engagement, improve patient convenience, streamline collection of PROs, and potentially generate more frequent and accurate data that can characterise disease <d-cite key="munos2016mobile"></d-cite><d-cite key="pratap2020evaluating"></d-cite><d-cite key="lipsmeier2022reliability"></d-cite><d-cite key="creagh2020smartphone"></d-cite>. In our previous work, we have also shown specifically how DHT can measure RA symptoms and functions, such as range of motion (ROM) and gait-specific metrics during prescribed <em>“active”</em> assessments<d-cite key="crouthamel2018using"></d-cite><d-cite key="hamy2020developing"></d-cite>. Other studies have shown how <em>“passive”</em> wearable actigraphy sensor-outcome measurements capture differences in RA physical activity (PA) in daily life, compared to healthy controls (HC) <d-cite key="prioreschi2013clinical"></d-cite>, as well as to detect flaring of RA symptoms <d-cite key="gossec2019detection"></d-cite>.</p>
+
+<h3 id="study-objectives">Study Objectives</h3>
+<p>Unfortunately, there remains a lack of sufficient evidence for how DHT can provide objective insights into the impact of therapies for RA. Particularly, the benefit of sensor-outcomes generated from prescribed active assessments compared with passive monitoring has not yet been explored together. Furthermore, while digitised PROs enhance patients’ ability to frequently record disease activity<d-cite key="el2016toward"></d-cite>, it remains unclear how objective sensor-outcomes could provide additional insight beyond PROs to characterise the impact of RA on daily life. The sensitivity of DHT to measure RA symptoms, such as the volume of remote data required and the number of sensor-outcome measurements needed, also needs to be determined. Finally, the application of DHT sensor-outcomes to monitor RA daily life remains to be validated against standard in-clinic administered assessments of RA impact<d-cite key="coravos2019developing"></d-cite>.</p>
+
+<figure>
+<img src="/assets/img/wearable-pro-study.png" width="700" /><br />
+<figcaption><b>Illustration detailing the objectives of this study</b>. The weaRAble-PRO 14-day trial aimed to investigate how
+digital health technologies (DHT)&mdash;a wrist-worn Apple smartwatch and an iPhone device, with bespoke mobile apps.&mdash;could augment patient reported outcomes (PRO) to characterise the impact of rheumatoid arthritis (RA) on the daily life of 30 moderate-to-severe RA patients, compared to 30 matched healthy controls (HC).</figcaption>
+</figure>
+
+<h2 id="dataset">Dataset</h2>
+<p>The GSK weaRAble-PRO study (GSK212295)<d-footnote>The full GSK study title is "Novel Digital Technologies for the Assessment of Objective Measures and Patient Reported Outcomes in Rheumatoid Arthritis Patients: A Pilot Study Using a Wrist-Worn Device and Bespoke Mobile App. (212295, weaRAble-PRO)".</d-footnote> was a 14-day observational study with 30 RA patients and 30 matched Healthy Controls (HCs) to investigate how digital health technologies could objectively measure the impact of RA on participants’ daily lives. Remotely collected sensor data was obtained from a wrist-worn Apple Watch—enabling continuous 14-day passive monitoring—and an iPhone, integrated with a bespoke mobile app., which prescribed daily guided assessments.  Sensor-based measures of physical function, mobility, dexterity, and other RA specific symptoms were extracted from daily prescribed (active) iPhone guided tests, such as a wrist-range of motion exercise, a walking assessment, a nine-hole peg test, as well as two pose transition-based mobility exercises, lie-to-stand (LTS) and sit-to-stand (STS). In addition, continuous (passive) actigraphy was recorded from participants’ Apple smartwatch over the study duration in order to characterise daily activity patterns and sleep. Patient-reported outcomes (PRO), most often self-report questionnaires, were also administered to assess disease activity, symptoms, and health status and quality of life from the participants’ perspective.</p>
+
+<p><b>Note</b>: this work details a sub-study of weaRAble-PRO; trial design, feasibility, participant adherence, and other primary related study outcomes will be published as part of a complementary manuscript.</p>
+
+<h2 id="methods">Methods</h2>
+<h3 id="self-supervised-learning-ssl-model">Self-supervised learning (SSL) model</h3>
+
+<p>The foundation of this work employs the latest advances in machine learning (ML), such as our self-supervised learning (SSL) methodology, which enabled a robust estimate of participants’ daily activity to be generated over the 14-day study. Building on our previously released work by Yuan et al.<d-cite key="yuan2022self"></d-cite>, in this study we demonstrated the first deployment of our deep convolutional neural network (DCNN)–which was pre-trained using SSL on 700,000 person days in the publicly available UK Biobank (significantly the largest of its kind to date)—in a clinical study. Our SSL DCNN model helped transform continuously collected Apple smartwatch sensor data to meaningful outcomes characterising the daily life for RA participants, such as the time spent active, sleeping, and other RA-specific measures, such as morning stiffness.</p>
+
+<p>In this study, we build upon our previous work by adding a temporal dependency to the DCNN (SSL) through a hidden markov model (HMM), which
+was appended to obtain a more accurate sequence of predicted activities over the continuous study period. It was found that the DCNN (SSL) + HMM improved activity estimation in Capture-24 ($\kappa$, 0.862 ± 0.088; F1, 0.815 ± 0.103) as compared to a baseline random forest (RF) + HMM approach ($\kappa$, 0.813 ± 0.108; F1, 0.775 ± 0.117) <d-cite key="willetts2018statistical"></d-cite>. Our SSL DCNN+HMM model enables a more robust and fine-grained estimation of daily activity patterns beyond traditional acceleration magnitude levels <d-cite key="prioreschi2013clinical"></d-cite><d-cite key="gossec2019detection"></d-cite>, which we propose allows for a richer characterisation of PA and sleep from wearable sensor data.</p>
+
+<p>For more information on our SSL model, check out our recent <a href="https://oxwearables.github.io/ssl-wearables/">blog post</a>.</p>
+
+<figure>
+<img src="/assets/img/ssl_wearable-pro.png" width="700" /><br />
+<figcaption><b>Self-supervised learning pipeline</b>. Continuous (passive) actigraphy was recorded from participants' Apple smartwatch over the study duration. Deep convolutional neural networks (DCNN) were pre-trained on 700,000 person days in the publicly available UK Biobank using self-supervised learning&mdash;and fine-tuned with the Capture-24 dataset&mdash;to estimate participant's daily activity patterns in the weaRAble-PRO study. Physical activity (PA) metrics of daily-life, for example, the time spent walking, the frequency of exercise, or the length and quality of sleep were investigated as markers to characterise symptoms of disease in people with RA compared to HC.
+</figcaption>
+</figure>
+
+<h3 id="extraction-of-sensor-based-outcomes">Extraction of sensor-based outcomes</h3>
+<p>Wearable sensor-based features were derived from the smartphone during the active guided tasks and passively from the
+smartwatch during daily life. “Active” features were extracted from smartphone sensor-based measurements during the prescribed guided tests, and aimed to capture specific aspects of RA physical function, related to pain, dexterity, mobility and fatigue. In addition, “passive” features were extracted from smartwatch sensor-based measurements, collected continuously in the background over the 14-day period. Daily activity predictions from the ML SSL model were summarised into general features measuring activity levels, period, duration, and type of activity, as well as sleep detection and sleeping patterns.</p>
+
+<h3 id="machine-learning-estimation-of-ra">Machine learning estimation of RA</h3>
+<p>From our sensor-based outcomes that we developed, we next explored how state-of-the art machine learning (ML) models could characterise the impact of RA on the daily life of the participants in the 14-day weaRAble-PRO study. Multivariate modelling aimed to explore the ability of active, passive, and PRO measures to: <b>(1)</b> distinguish RA participants from healthy controls (HC) and <b>(2)</b> to estimate RA disease severity: between RA participants with moderate symptoms (RA mod) and severe symptoms (RA sev) as binary classification tasks. Expansions of this analysis subsequently investigated how the in-clinic RAPID-3 assessment, a continuous measure of RA severity, could be estimated from the combination of PRO and sensor-based outcomes.</p>
+
+<p>We first outlined how regularised linear regression (LR) models, with combinations of $\ell_1$ and $\ell_2$ priors, such as LR-lasso ($\ell_1$), LR-ridge ($\ell_2$), and LR-elastic-net ($\ell_1$ +$\ell_2$), could yield predictive, yet sparse model solutions for estimating RA status. Further regularisation extensions were also investigated using the sparse-group lasso (SG-lasso)–an extension of the lasso that promotes both group sparsity and within group parameter-wise ($\ell_2$) sparsity, through a group lasso penalty and the lasso penalty—which aims to yield a sparse set of groups and also a sparse set of covariates in each selected group <d-cite key="friedman2010note"></d-cite><d-cite key="simon2013sparse"></d-cite>. We also compared linear LR models to common, off-the-shelf, decision tree (DT) based non-linear models, for instance Random Forest (RF) <d-cite key="breiman2001RF"></d-cite> and Extreme Gradient Boosted Trees (XGB)<d-cite key="chen2016xgboost"></d-cite>.</p>
+
+<h2 id="key-findings">Key Findings</h2>
+
+<h4 id="1-remote-sensor-outcomes-reflect-ra-status-and-severity">1. Remote sensor-outcomes reflect RA status and severity</h4>
+<p>In this work, we detailed how raw data collected from smartphone and smartwatch sensors can be transformed into sensor-based outcomes that are reflective of disease status. In concurrence with previous studies, many remotely collected smartphone sensor-outcomes distinguished RA participants and RA severity levels. For example, it was observed that joint ROM features differentiated HC and RA groups—a similar finding to our previous work <d-cite key="hamy2020developing"></d-cite>—and that RA participants were less mobile, taking longer to move between positions (as measured during the lie-to-stand exercise)—as previously shown by Andreu-Perez, et al. <d-cite key="andreu2017developing"></d-cite>.</p>
+
+<p>Activity monitoring revealed distinct differences distinguishing RA status, for example the daily percent of the day in moderate-to-vigorous physical activity and similar features, were significantly lower in the RA population compared to healthy controls—a similar finding by Prioreschi, et al. <d-cite key="prioreschi2013clinical"></d-cite> and an observation people with RA regularly self-report <d-cite key="sokka2008physical"></d-cite>. Other specific RA symptom measurements, like morning stiffness or disrupted sleep, were evident in certain RA participants. For example, the mean acceleration value $&gt;$30 [mins] after wake-up were lower in RA—also a similar finding to Keogh, et al. <d-cite key="keogh2020thorough"></d-cite>—or that the number of movement episodes during night-time sleep distinguished some specific RA participants.</p>
+
+<div class="fake-img l-body">
+  <img src="/assets/img/pop_activity_patterns.png" width="700" /><br />
+   <figcaption><b>Population-wide daily activity by time of the day</b>. Variation in the average ML SSL model predicted daily-activity (probability) over time for participants in the 14-day weaRAble-PRO study.</figcaption>
+</div>
+
+<h4 id="2-combined-benefit-of-active-and-passive-sensor-data-but-patient-burden-needs-to-be-considered">2. Combined benefit of active and passive sensor data, but patient burden needs to be considered</h4>
+<p>Our work is the first study to combine active smartphone and passive wearable measurements to distinguish RA status and measure variations in RA severity. While models trained on only passive features tended to marginally outperform models trained solely on active guided test features, combining both active + passive features led to the best performance in RA identification for all models investigated. Interestingly, it was found that completely different RA subjects were misclassified by active versus passive models.</p>
+
+<p>In addition, further experiments with the LR-SG-lasso determined that only activity monitoring domain features were mainly needed in order to identify RA participants. This indicates that we sometimes do not need to prescribe all guided test assessments, or to parse all activity feature domains, but that a small number of prescribed assessments can be sufficient to characterise RA status. For example, including only the lie-to-stand assessment rather than also prescribing the similar and highly correlated sit-to-stand assessment in future studies; or removing the prescribed walking assessment (shown to have little predictive value in the weaRAble-PRO study) and using passive daily life walking predictions generated from the activity recognition model instead, which could reduce patient burden.</p>
+
+<div class="fake-img l-body">
+  <img src="/assets/img/sensor_barchart.png" width="350" /><img src="/assets/img/PRO_sensor_barchart.png" width="350" /><br /><br />
+  <figcaption><b>Ability of combined sensor-outcomes to distinguish between RA status and RA severity levels.</b> Comparison of (a) RA identification (RA vs. HC) performance and (b) RA severity level estimation (RA (mod) vs RA (sev)), using patient reported outcomes (PRO) and combined PRO, active, and passive sensor-based outcomes in the weaRAble-PRO study. auroc: Area under the receiver operator curve; $\kappa$, Cohen's Kappa statistic; F<sub>1</sub>, Macro-F1 score.</figcaption>
+</div>
+
+<h4 id="3-only-7-days-of-sensor-outcomes-are-required-to-remotely-characterise-ra-impact">3. Only 7 days of sensor-outcomes are required to remotely characterise RA impact</h4>
+<p>We also observed that after collecting 7 days of sensor-data in the weaRAble-PRO study, a sufficient volume of data had already been recorded to reliably distinguish RA participants from a healthy population; participant feature reliability (as measured ICC values) stabilised at good-to-excellent levels, maximal identification performance of RA participants plateaued, and that there was no additional benefit to averaging over a fortnight’s worth of data versus a week. Therefore it is recommended that considering at least one week’s worth of sensor data is collected, it might be more beneficial to gather less data from a greater number of participants, rather than greater duration of sensor data from the same participants.</p>
+
+<div class="fake-img l-body">
+  <img src="/assets/img/daily_f1.png" width="350" /><img src="/assets/img/daily_icc.png" width="350" /><br />
+  <figcaption><b>The number of days of sensor-data required to remotely characterise RA impact.</b>  Comparison of <b>(a)</b> the minimal amount of days of data needed distinguish RA status, as measured by the F1 score across 5-fold cross validation (CV), between active, passive, and combined feature sources; <b>(b)</b> the feature (test-retest) reliability, as measured by the intraclass correlation coefficient (ICC), between RA participants and HC across the study duration (14 days); F1 scores and ICCs suggest that model performance and feature reliability stabilises once more than 7 days of data are used per participant.</figcaption>
+</div>
+
+<h4 id="4-in-clinic-ra-severity-scores-can-be-remotely-estimated-from-pro-and-sensor-based-outcomes">4. In-clinic RA severity scores can be remotely estimated from PRO and sensor-based outcomes</h4>
+<p>We found that combining patient-reported outcomes (PRO) and objective sensor-outcomes could better capture RAPID-3-based RA severity at baseline than PROs alone; most estimated RAPID-3 scores correctly stratified participants across severity levels from healthy to moderate to severe RA, suggesting that sufficient information to characterise RA disease severity could be reflected in the remote monitoring outcomes derived in the 14-day weaRAble-PRO study. To the best of the authors knowledge, this offers the first evaluation and insight how remote monitoring outcomes in daily life can estimate in-clinic administered assessments of RA impact.</p>
+
+<div class="fake-img l-body">
+  <img src="/assets/img/rapid3_estimation_pro_sensor.png" width="700" /><br />
+  <figcaption><b>The ability of remote PRO + sensor-outcomes to estimate in-clinic determined RA severity scores</b>. Scatter plot of baseline RAPID-3 scores versus predicted scores per subject. Participant model-estimated RAPID-3 scores can be further interpreted through detailed inspection of the daily smartphone-based patient-reported joint pain map (JMAP) total scores&mdash;which was not included as a predictor in the model. Higher JMAP scores indicate higher levels of pain experienced. Additional interpretability, through the JMAP, demonstrated that PRO + sensor-based outcome estimation of the RAPID-3 could reliably reflect patient's perceived daily RA symptoms.</figcaption>
+</div>
+
+<h2 id="limitations">Limitations</h2>
+<p>There are a number of limitations that must be considered in the weaRAble-PRO study. Despite rich individual level measurements, the study recruited a relatively small sample size (HC, n=30; RA, n=30). As such, a degree of variability and uncertainty existed in constructing cross-validated models to distinguish RA participants, RA severity levels, or estimate the in-clinic RAPID-3 assessment. There are also limitations associated with modelling a clinician-administered assessment, or clinical labels formulated from in-clinic assessments. A degree of variability and uncertainty existed in modelling the RAPID-3, or RA severity levels, and certainly extrapolation of results aimed at generalising RA is therefore not possible without the availability of larger cohorts and further external validation. Furthermore, the RAPID-3 was assessed at baseline, with participants recalling the prior week, yet the PRO and sensor-based features were calculated as averages over subsequent 14-day trial period from baseline. As such, the baseline RAPID-3 may not have precisely reflected the participant’s disease status recorded earlier, due to the underlying mutability and heterogeneity of RA symptoms over short periods of time. The subjectivity of PRO predictors should also considered, for instance, pain or perceived quality of sleep is relative, and some healthy participants recorded experiencing pain or affected sleep in PRO questionnaires. As a result, some PRO values influenced HC RAPID-3 predictions greater than zero, i.e., indicating the presence of RA symptoms—albeit non-zero estimated RAPID-3 predictions for HCs were generally low ($&lt;$2).</p>
+
+<h2 id="impact">Impact</h2>
+<p>Our findings in the weaRAble-PRO study demonstrate how digital health technology (DHT) captured sensor-outcomes, recorded from smartphone-based active tests and continuously collected passive smartwatch-based monitoring, could characterise meaningful aspects of rheumatoid arthritis (RA)
+impairment and physical function impacting daily life. Remotely collected wearable sensor-outcomes could distinguish RA status from healthy controls—demonstrating further improved performance when combining the sensor-data from both devices—and how objective sensor-outcomes could augment
+patient (self-) reported outcomes to remotely estimate RA severity. Furthermore, by the half-way point of the weaRAble-PRO study (day 7), a sufficient volume of data had already been collected to reliably distinguish the characteristics of RA participants.</p>
+
+<p>The weaRAble-PRO study typifies how continuously collected patient self-reported and sensor-based outcomes may more closely reflect participant perceived and experienced symptoms that impact daily life. While in-clinic assessments are considered the gold-standard means of assessing disease
+severity in RA, it is clear that remotely collected, continuous, patient-centric measurements generated from PRO and sensorbased
+outcomes offer promising insights that can undoubtedly augment in-clinic assessments for RA. We believe that our work—the first comprehensive evaluation how remote sensor data can augment traditional PRO measures to estimate clinician-determined RA severity—helps informs future DHT
+study design to better characterise the impact of RA on daily life, ultimately to expand the use of DHT to develop more
+sensitive, and patient-centric, endpoints in RA clinical trials and real-world studies.</p>
+
+<h2 id="code-availability">Code Availability</h2>
+<p>Apple Watch sensor processing was performed using a bespoke version of the biobankAccelerometerAnalysis toolkit, found at: <a href="https://github.com/OxWearables/biobankAccelerometerAnalysis">https://github.com/OxWearables/biobankAccelerometerAnalysis</a>.</p>
+
+<p>Deep networks were built using Python v3.7 through a PyTorch v1.7 framework. Our self-supervised learning activity prediction code and trained models are publicly available at:  <a href="https://github.com/OxWearables/ssl-wearables">https://github.com/OxWearables/ssl-wearables</a>, including pre-trained models on 100K participants in the UK Biobank.</p>
+
+<p>Some guided test exercises and health metrics calculated are proprietary to Apple ResearchKit <a href="http://researchkit.org/">http://researchkit.org/</a> and Apple HealthKit <a href="https://developer.apple.com/documentation/healthkit">https://developer.apple.com/documentation/healthkit</a>, check these out for more details.</p>
+
+<p>Statistical and machine learning analysis was developed using scikit-learn v1.1.1. Further analysis code can be made available by reaching out to me by email at <a href="andrew.creagh@eng.ox.ac.uk">andrew.creagh@eng.ox.ac.uk</a>.</p>
+
+<h2 id="reference">Reference</h2>
+<p>If you use our work, please consider citing:</p>
+
+<div class="language-tex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@article<span class="p">{</span>creagh2022digital,
+  title = <span class="p">{</span>Digital health technologies and machine learning augment patient reported outcomes to remotely characterise rheumatoid arthritis<span class="p">}</span>,
+  author = <span class="p">{</span>Creagh, A. P. and Hamy, V. and Yuan, H. and Mertes, G. and Tomlinson, R. and Chen, W-H. and Williams, R. and Llop, C. and Yee, C. and Duh, M-H. and Doherty, A. and Garcia-Gancedo, L. and Clifton, D. A.<span class="p">}</span>,
+  elocation-id = <span class="p">{</span>2022.11.18.22282305<span class="p">}</span>,
+  year = <span class="p">{</span>2022<span class="p">}</span>,
+  doi = <span class="p">{</span>10.1101/2022.11.18.22282305<span class="p">}</span>,
+  publisher = <span class="p">{</span>Cold Spring Harbor Laboratory Press<span class="p">}</span>,
+  html = <span class="p">{</span>https://www.medrxiv.org/content/10.1101/2022.11.18.22282305v1<span class="p">}</span>,
+  journal = <span class="p">{</span>medrXiv<span class="p">}</span>,
+  abbr = <span class="p">{</span>medrXiv<span class="p">}</span>,
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name>Andrew P. Creagh*</name></author><category term="pre-print" /><category term="summary" /><category term="digital health" /><summary type="html"><![CDATA[Our new pre-print is now available online! 🥳 Here I will summarise our main findings and the impact of our work in the 14-day observational study in RA, known as weaRAble-PRO.]]></summary></entry></feed>
