@@ -6,9 +6,9 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Andrew
 middle_name: P.
 last_name: Creagh
-email: andrew.creagh@eng.ox.ac.uk
+email: andrew.creagh@sanome.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Personal academic website for Dr. Andrew P. Creagh.
+  Personal website for Dr. Andrew P. Creagh.
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
@@ -70,7 +70,7 @@ quora_username: # your Quora username
 publons_id: # your ID on Publons
 research_gate_profile: # your profile on ResearchGate
 blogger_url: # your blogger URL
-work_url: https://eng.ox.ac.uk/people/andrew-creagh/ # work page URL
+work_url: https://sanome.com/about-us/ # work page URL
 keybase_username: # your keybase user name
 wikidata_id: # your wikidata id
 dblp_url: # your DBLP profile url
@@ -79,7 +79,7 @@ stackoverflow_id: #your stackoverflow id
 rss_icon: false
 
 contact_note: >
-  The best way to reach me is at andrew.creagh@eng.ox.ac.uk
+  The best way to reach me is at andrew.creagh@sanome.com
 google_analytics: G-5DL09P787M # out your google-analytics code
 panelbear_analytics: XXXXXXXXX # panelbear analytics site ID
 
