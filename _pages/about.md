@@ -21,14 +21,11 @@ social: true  # includes social icons at the bottom of the page
 *** 
 
 ## Welcome 
-I am a Digital Health & AI/ML Scientist. I am currently the Head of AI/ML at [Sanome]( https://www.sanome.com/){:target="\_blank"}, where we're building personalised AI-powered early warning systems to predict individual health outcomes. 
-
-I am concurrently a Visiting Researcher at the [Computational Health Informatics (CHI)](https://eng.ox.ac.uk/chi/){:target="\_blank"} laboratory at the University of Oxford, a Junior Research Fellow at [St Cross College](https://www.stx.ox.ac.uk/people/dr-andrew-creagh){:target="\_blank"}, University of Oxford, and a Visiting Researcher at the [Oxford Wearables Laboratory](https://www.bdi.ox.ac.uk/research/wearables-group){:target="\_blank"} at the [Big Data Institute (BDI)](https://www.bdi.ox.ac.uk/){:target="\_blank"}.<br>
+I am a Digital Health & AI/ML Scientist. I am currently lead the applied AI/ML research team at Sanome at [Sanome](https://www.sanome.com/){:target="\_blank"}, where we’re building personalised AI-powered clinical decision support tools to continuously predict individual health outcomes using routinely collected multimodal electronic health record (EHR) and wearable data, with models regulated as \textbf{software-as-a-medical-device (SaMD)}. I am concurrently a Visiting Researcher at the laboratory at the University of Oxford. 
 
 ##### My Research Profiles:
-[Sanome](https://www.sanome.com/team){:target="\_blank"} <br>
-[Big Data Institute](https://www.bdi.ox.ac.uk/Team/andrew-creagh){:target="\_blank"} <br>
-[St Cross College](https://www.stx.ox.ac.uk/people/dr-andrew-creagh){:target="\_blank"}<br>
+[Sanome](https://sanome.com/about-us/){:target="\_blank"} <br>
+[University of Oxford](https://www.bdi.ox.ac.uk/Team/andrew-creagh){:target="\_blank"} <br>
 
 ## Research 
 My research aims to explore how we can capture digital biomarkers of disease using multimodal digital health data and AI/ML to inform early warning of clinical events. I have a specific interest in how the integration of digital health technologies (DHT)---like smartwatches and wearable sensors---will augment routinely collected clinical data and electronic health records (EHR) to enhance patient treatment strategies, uncover digital phenotypes and ultimately develop personalised patient monitoring stratagies and truly personalised healthcare for patients. 
@@ -44,3 +41,5 @@ a Postdoctoral Researcher at the [Computational Health Informatics (CHI)](https:
 My research explored the development of validated digital biomarkers for clinical trial (CT) end-points and prescribed digital therapeutics (DTx) using consumer digital health technologies (DHT) collected from smartphone and smartwatch app. sensors. I have worked with CT data from patients in a range of Therapeutic Areas (TA) from multiple sclerosis to Parkinson’s disease, rheumatoid arthritis, dementia, and mental health.
 
 Prior to my DPhil. I hold a bachelor’s degree (BAI, BA) in Biomedical Engineering and master’s degree (MAI) in Neural Engineering from Trinity College, the University of Dublin. My research at Trinity investigated the use of machine learning techniques to predict the onset of dementia in later life, through the characterisation of gait and cognitive performance from routine clinical assessments conducted during the Irish Longitudinal Study on Aging (TILDA). 
+
+**this page is unmaintained**
