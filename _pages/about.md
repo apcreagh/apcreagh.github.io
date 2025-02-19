@@ -21,7 +21,7 @@ social: true  # includes social icons at the bottom of the page
 *** 
 
 ## Welcome 
-I am a Digital Health & AI/ML Scientist. I am currently lead the applied AI/ML research team at Sanome at [Sanome](https://www.sanome.com/){:target="\_blank"}, where we’re building personalised AI-powered clinical decision support tools to continuously predict individual health outcomes using routinely collected multimodal electronic health record (EHR) and wearable data, with models regulated as \textbf{software-as-a-medical-device (SaMD)}. I am concurrently a Visiting Researcher at the laboratory at the University of Oxford. 
+I am a Digital Health & AI/ML Scientist. I am currently lead the applied AI/ML research team at Sanome at [Sanome](https://www.sanome.com/){:target="\_blank"}, where we’re building personalised AI-powered clinical decision support tools to continuously predict individual health outcomes using routinely collected multimodal electronic health record (EHR) and wearable data, with models regulated as \textbf{software-as-a-medical-device (SaMD)}. I am concurrently a Visiting Researcher at the University of Oxford. 
 
 ##### My Research Profiles:
 [Sanome](https://sanome.com/about-us/){:target="\_blank"} <br>
